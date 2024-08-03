@@ -50,10 +50,12 @@ const FaqSection = () => {
   };
 
   return (
-    <div className="w-full flex items-center px-6 md:px-12 lg:px-20 pt-20 pb-32 bg-[#00213F] rounded-t-[100px] -mb-24">
+    <div className="w-full flex items-center px-6 md:px-12 lg:px-20 pt-20 pb-32 bg-[#00213F] rounded-t-[40px] md:rounded-t-[100px] -mb-24">
       <div className="flex flex-col w-full items-center">
-        <h2 className="text-3xl font-bold text-start ml-3 text-white">FAQ's</h2>
-        <p className="font-normal text-md mb-8 text-white items-center">
+        <h2 className="text-[24px] md:text-[30px] font-bold text-start ml-3 text-white">
+          FAQ's
+        </h2>
+        <p className="font-normal text-[17px] md:text-[19px] mb-8 text-white items-center">
           View the frequently asked questions below
         </p>
         <div className="flex flex-wrap w-full justify-center">
@@ -71,7 +73,7 @@ const FaqSection = () => {
                 />
                 <label
                   onClick={() => toggleAccordion(index)}
-                  className={`collapse-title text-xl font-medium cursor-pointer ${
+                  className={`collapse-title text-[16px] md:text-xl font-medium cursor-pointer ${
                     activeIndex === index
                       ? "bg-white text-black"
                       : "text-white bg-transparent"
@@ -106,7 +108,7 @@ const FaqSection = () => {
                 />
                 <label
                   onClick={() => toggleAccordion(index + 5)}
-                  className={`collapse-title text-xl font-medium  cursor-pointer ${
+                  className={`collapse-title text-[16px] md:text-xl font-medium  cursor-pointer ${
                     activeIndex === index + 5
                       ? "bg-white text-black"
                       : "text-white bg-transparent"

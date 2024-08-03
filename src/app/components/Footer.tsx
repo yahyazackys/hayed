@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="w-full py-16 px-4 md:px-8 lg:px-16 xl:px-40 bg-[#0B436B] z-20 flex flex-col  gap-y-12 rounded-t-[100px] shadow-xl shadow-white"
+      className="w-full py-16 px-4 md:px-8 lg:px-16 xl:px-40 bg-[#0B436B] z-20 flex flex-col  gap-y-12 rounded-t-[40px] md:rounded-t-[100px] shadow-xl shadow-white"
     >
       <div className="flex flex-col lg:flex-row justify-between w-full items-center gap-y-16 lg:gap-y-0">
         <div className="flex flex-col items-center lg:items-start">

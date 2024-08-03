@@ -17,28 +17,38 @@ export default function Page() {
           fill
           objectFit="cover"
           className="z-0"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-black-original opacity-40 rounded-lg transition-opacity duration-100 ease-in-out"></div>
         <div className="absolute top-0 left-0 w-full h-full flex items-start justify-center mt-8 md:mt-12 lg:mt-16 xl:mt-20 px-6 md:px-12 lg:px-20 xl:px-28 pb-20 flex-col z-20 gap-y-4 max-w-full md:max-w-[80%] lg:max-w-[70%]">
-          <span className="text-white text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-center md:text-left">
+          <span className="text-white text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-left">
             Bingung cara membuat laporan keuangan?
           </span>
-          <span className="text-white text-md md:text-lg xl:text-xl font-extralight text-center md:text-left">
+          <span className="text-white text-md md:text-lg xl:text-xl font-extralight text-left">
             Kami Selalu Siap Membantumu
           </span>
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row w-full justify-between py-10 px-6 md:px-12 lg:px-40">
-        <div className="flex flex-col w-1/4 items-center lg:items-start mb-10 lg:mb-0">
+      <div className="flex flex-col lg:flex-row w-full justify-between py-8 md:py-10 px-6 md:px-12 lg:px-40">
+        <div className="hidden md:flex flex-col w-1/4 items-center lg:items-start mb-10 lg:mb-0">
           <Image
             src="/service/auditing-icon.png"
             alt="Background image"
             width={100}
             height={100}
-            objectFit="cover"
+            objectFit="contain"
             className="w-1/2"
             layout="responsive"
+          />
+        </div>
+        <div className="max-md:flex md:hidden flex-col items-center justify-center w-full mb-10 lg:mb-0">
+          <Image
+            src="/service/auditing-icon.png"
+            alt="Background image"
+            width={200}
+            height={100}
+            objectFit="contain"
           />
         </div>
         <div className="flex flex-col items-start text-black w-full lg:w-1/2 gap-y-4 justify-center">

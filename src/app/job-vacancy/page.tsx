@@ -13,15 +13,16 @@ interface Job {
   keterangan: string;
 }
 
-export default function page() {
+export default function Page() {
   const [jobs, setJobs] = useState<Job[]>([]);
+  const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
+  const apiUrl = "https://hayed-admin.com/api/lowongan-pekerjaan";
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const apiUrl = "https://hayed-admin.com/api/lowongan-pekerjaan";
-        const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
-
         const response = await axios.get(apiUrl, {
           headers: {
             api_key: apiKey,
@@ -29,7 +30,10 @@ export default function page() {
         });
         setJobs(response.data.data);
       } catch (error) {
-        console.error("Error fetching consultants:", error);
+        console.error("Error fetching events:", error);
+        setError("Failed to fetch data");
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -43,7 +47,7 @@ export default function page() {
         <div className="flex flex-col md:flex-row justify-between items-center w-full">
           <div className="md:w-1/2 flex flex-col justify-center text-center md:text-left mb-8 md:mb-0">
             <h2 className="text-4xl font-bold mb-3 text-black">
-              Mengapa Anda Harus Bergabung Di Hayed Consulting ?{" "}
+              Mengapa Anda Harus Bergabung Di Hayed Consulting ?
             </h2>
             <p className="max-w-lg text-black font-light text-justify">
               Hayed Consulting adalah perusahaan yang menawarkan layanan

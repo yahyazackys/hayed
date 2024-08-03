@@ -1,3 +1,5 @@
+"use client";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -96,18 +98,19 @@ const NextEvent = () => {
       {events.map((event) => (
         <SwiperSlide key={event.id} className="py-8">
           <div className="flex justify-center items-center h-full">
-            <div className="bg-white shadow-lg rounded-xl overflow-hidden w-72 md:w-80">
-              <Link href={`/previousEvent/${event.id}`}>
+            <div className="bg-white rounded-xl overflow-hidden w-72 md:w-80">
+              <Link href={`/seminar-and-activity/${event.id}`}>
                 <div className="relative h-72 w-full">
                   <Image
                     src={`${imageBaseUrl}${event.gambar}`}
                     alt={event.judul}
                     layout="fill"
                     objectFit="cover"
+                    className=""
                   />
                 </div>
-                <div className="py-4 px-4 text-center">
-                  <h2 className="text-lg font-normal text-black-soft break-words">
+                <div className="flex items-center justify-center h-24 max-h-20 text-center px-4">
+                  <h2 className="text-md font-normal text-black-soft break-words">
                     {event.judul}
                   </h2>
                 </div>

@@ -63,21 +63,39 @@ const ClientSection = () => {
   return (
     <section
       id="clients"
-      className="w-full py-16 overflow-hidden flex justify-center items-center"
+      className="w-full py-12 md:py-16 overflow-hidden flex justify-center items-center"
     >
       <div className="flex flex-col items-center w-full">
-        <h2 className="text-3xl md:text-4xl font-bold text-black mb-16">
+        <h2 className="text-[24px] md:text-4xl font-bold text-black mb-2 md:mb-16">
           Our Clients
         </h2>
-        <div className="w-full">
+        <div className="hidden md:block w-full">
           <Slider {...settings}>
             {clients.map((client, index) => (
               <div key={index} className="flex items-center justify-center">
                 <Image
                   src={client.logo}
                   alt={client.name}
+                  width={280}
+                  height={180}
+                  className="object-contain"
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
+        <div className="md:hidden max-md:block w-full">
+          <Slider {...settings}>
+            {clients.map((client, index) => (
+              <div
+                key={index}
+                className="max-w-40 flex items-center justify-center"
+              >
+                <Image
+                  src={client.logo}
+                  alt={client.name}
                   width={200}
-                  height={120}
+                  height={100}
                   className="object-contain"
                 />
               </div>

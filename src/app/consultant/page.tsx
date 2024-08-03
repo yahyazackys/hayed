@@ -19,41 +19,18 @@ interface Consultant {
 
 export default function Page() {
   const [consultants, setConsultants] = useState<Consultant[]>([]);
-  const imageBaseUrl = "http://hayed-admin.com/consultantBg-images/";
+  const apiUrl = "https://hayed-admin.com/api/consultant";
+  const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
+  const imageBaseUrl = "https://hayed-admin.com/consultantNonbg-images/";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  //   useEffect(() => {
-  //     axios
-  //       .get(apiUrl, {
-  //         headers: {
-  //           api_key: apiKey,
-  //         },
-  //       })
-  //       .then((response) => {
-  //         setConsultants(response.data.data);
-  //         setLoading(false);
-  //       })
-  //       .catch((error) => {
-  //         setError("Failed to fetch data");
-  //         setLoading(false);
-  //       });
-  //   }, []);
-
-  //   if (loading) {
-  //     return <div>Loading...</div>;
-  //   }
-
-  //   if (error) {
-  //     return <div>{error}</div>;
-  //   }
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   useEffect(() => {
-    const fetchConsultants = async () => {
+    const fetchEvents = async () => {
       try {
-        const apiUrl = "https://hayed-admin.com/api/consultant";
-        const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
-
         const response = await axios.get(apiUrl, {
           headers: {
             api_key: apiKey,
@@ -61,17 +38,47 @@ export default function Page() {
         });
         setConsultants(response.data.data);
       } catch (error) {
-        console.error("Error fetching consultants:", error);
+        console.error("Error fetching events:", error);
+        setError("Failed to fetch data");
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchConsultants();
+    fetchEvents();
   }, []);
+
+  const totalPages = Math.ceil(consultants.length / itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const currentConsultants = consultants.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  if (loading) {
+    return (
+      <div className="w-full h-screen text-center flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!consultants || consultants.length === 0) {
+    return <div>No Consultant found</div>;
+  }
 
   return (
     <main className="w-full h-full">
       <Header />
-      <section className="w-full h-screen flex flex-col justify-center items-center px-10 md:px-40">
+      <section className="w-full md:h-screen flex flex-col justify-center items-center max-md:pt-28 px-10 md:px-40">
         <div className="flex flex-col md:flex-row justify-between items-center w-full">
           <div className="flex justify-center order-2 md:order-1">
             <Image
@@ -82,8 +89,10 @@ export default function Page() {
               objectFit="cover"
             />
           </div>
-          <div className="md:w-1/2 flex flex-col justify-center text-center md:text-end order-1 md:order-2 mb-8 md:mb-0">
-            <h2 className="text-4xl font-bold mb-3 text-black">Our Mission</h2>
+          <div className="md:w-1/2 flex flex-col justify-center text-start md:text-end order-1 md:order-2 mb-8 md:mb-0">
+            <h2 className="text-[30px] md:text-4xl font-bold mb-3 text-black">
+              Our Mission
+            </h2>
             <p className="max-w-lg text-black font-light md:self-end text-justify">
               Our missions are strengthening leadership in tax consulting
               services, accounting & business management, strengthening presence
@@ -96,38 +105,30 @@ export default function Page() {
 
       <section className="w-full py-16 px-10 md:px-20 bg-white">
         <div className="flex flex-col items-center mb-12">
-          <Image
-            src="/consultant/icon.png"
-            alt=""
-            width={100}
-            height={400}
-            objectFit="contain"
-          />
-          <h2 className="text-3xl font-bold text-start ml-3 text-black mt-4">
+          <h2 className="text-[30px] md:text-4xl font-bold text-start ml-3 text-black mt-4 text-[#1E3E79]">
             TEAM CONSULTANT
           </h2>
-          <h2 className="text-xl font-semibold text-start ml-3 text-black">
+          <h2 className="text-[18px] md:text-xl font-semibold text-start ml-3 text-black">
             HAYED CONSULTING
           </h2>
         </div>
         <div className="flex flex-wrap justify-center gap-8">
-          {consultants.map((consultant) => (
+          {currentConsultants.map((consultant) => (
             <Link
               href={`/consultant/${consultant.id}`}
               key={consultant.id}
-              className="flex flex-col items-center max-w-xs text-center"
+              className="flex flex-col items-center max-w-xs text-center w-80 mx-2"
             >
-              <div className="bg-blue-500 rounded-tl-[200px] rounded-tr-[400px] rounded-bl-[300px] rounded-br-[300px] w-60 h-60 flex items-center justify-center mb-4 overflow-hidden">
+              <div className="bg-white shadow-xl p-4 rounded-xl w-60 h-72 flex items-center justify-center mb-4 overflow-hidden">
                 <Image
-                  src={`${imageBaseUrl}${consultant.gambar_bg}`}
-                  //   src={`${imageBaseUrl}${article.gambar}`}
+                  src={`${imageBaseUrl}${consultant.gambar_nonbg}`}
                   alt={consultant.nama_gelar}
                   width={120}
                   height={128}
-                  //   layout="responsive"
                   objectFit="cover"
                   className="w-full"
                   loading="lazy"
+                  unoptimized
                 />
               </div>
               <h3 className="text-2xl font-semibold text-black">
@@ -135,6 +136,21 @@ export default function Page() {
               </h3>
               <p className="text-black font-light">{consultant.pekerjaan}</p>
             </Link>
+          ))}
+        </div>
+        <div className="flex justify-center mt-8">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => handlePageChange(index + 1)}
+              className={`py-2 px-4 mx-1 rounded ${
+                currentPage === index + 1
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-200 text-black"
+              }`}
+            >
+              {index + 1}
+            </button>
           ))}
         </div>
       </section>

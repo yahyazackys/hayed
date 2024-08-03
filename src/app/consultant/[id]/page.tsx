@@ -1,120 +1,81 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import axios from "axios";
-// import { useRouter } from "next/router";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import axios from "axios";
+import { Montserrat, Poppins } from "next/font/google";
+import Footer from "@/app/components/Footer";
+import Header from "@/app/components/Header";
 
-interface Consultant {
-  id: number;
-  nama_asli: string;
-  nama_gelar: string;
-  pekerjaan: string;
-  keterangan: string;
-  gambar_bg: string;
-  gambar_nonbg: string;
-}
+const InformasiDetail = async ({ params }: { params: { id: string } }) => {
+  const apiUrl = `https://hayed-admin.com/api/consultant/${params.id}/detail`;
+  const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
+  const imageBaseUrl = "http://hayeDADAd-admin.com/consultantBg-images/";
 
-export default function ConsultantPage() {
-  //   const router = useRouter();
-  const pathname = usePathname();
-  const id = pathname.split("/").pop();
-  const [consultant, setConsultant] = useState<Consultant | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const imageBaseUrl = "http://hayed-admin.com/consultantNonbg-images/";
+  try {
+    const response = await axios.get(apiUrl, {
+      headers: {
+        api_key: apiKey,
+      },
+    });
+    const informasi = response.data.data;
 
-  useEffect(() => {
-    if (id) {
-      const fetchConsultant = async () => {
-        try {
-          const apiUrl = `https://hayed-admin.com/api/consultant/${id}/detail`;
-          const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
-
-          const response = await axios.get(apiUrl, {
-            headers: {
-              api_key: apiKey,
-            },
-          });
-          setConsultant(response.data.data);
-        } catch (error) {
-          setError("Failed to fetch consultant data");
-        } finally {
-          setLoading(false);
-        }
-      };
-
-      fetchConsultant();
-    }
-  }, [id]);
-
-  if (loading) {
     return (
-      <div className="w-full h-screen text-center items-center flex justify-center">
-        Loading...
-      </div>
-    );
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-
-  if (!consultant) {
-    return <div>No consultant found</div>;
-  }
-
-  return (
-    <main className="w-full h-full">
-      <Header />
-      <section className="w-full h-screen flex flex-col justify-center items-center px-10 md:px-40">
-        {/* <div className="flex flex-col md:flex-row justify-between items-center w-full">
-          <div className="md:w-1/2 flex flex-col justify-center text-center md:text-start mb-8 md:mb-0">
-            <h2 className="text-4xl font-bold mb-3 text-black">
-              {consultant.nama_gelar}
-            </h2>
-            <p className="max-w-lg text-black font-light md:self-end text-justify">
-              {consultant.keterangan}
-            </p>
-          </div>
-          <div className="md:flex justify-center hidden">
-            <Image
-              src={`${imageBaseUrl}${consultant.gambar_nonbg}`}
-              alt={`${consultant.nama_gelar}`}
-              width={500}
-              height={400}
-              objectFit="cover"
-              loading="lazy"
-            />
-          </div>
-        </div> */}
-        <div className="flex flex-col md:flex-row justify-between items-start w-full mb-20">
-          <div className="md:w-1/2 flex flex-col justify-center  md:text-left mb-8 md:mb-0">
-            <h2 className="text-4xl font-bold mb-3 text-black">
-              {consultant.nama_gelar}
-            </h2>
-            <p className="max-w-lg text-black font-light text-justify">
-              <span
-                dangerouslySetInnerHTML={{ __html: consultant.keterangan }}
+      <main className="w-full h-full">
+        <Header />
+        <section
+          id="about"
+          className="w-full min-h-screen flex items-center px-6 md:px-12 lg:px-20 xl:px-40 py-28 md:py-32 lg:py-40"
+        >
+          <div className="flex flex-col md:flex-row md:justify-between gap-x-10 w-full gap-y-8 md:gap-y-0">
+            <div className=" flex justify-center md:justify-start">
+              <div className="max-w-full">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl mb-6 font-bold text-center md:text-left text-black-original">
+                  {informasi.nama_gelar}
+                </h2>
+                <p className="max-w-full md:max-w-3xl text-justify text-black">
+                  <span
+                    dangerouslySetInnerHTML={{ __html: informasi.keterangan }}
+                  />
+                </p>
+              </div>
+            </div>
+            <div className=" flex justify-center md:justify-end items-center">
+              <Image
+                src={`${imageBaseUrl}${informasi.gambar_bg}`}
+                alt="Hayed Logo"
+                width={400}
+                height={300}
+                className="w-auto h-auto max-w-full"
               />
-            </p>
+            </div>
           </div>
-          <div className="md:flex justify-center hidden">
-            <Image
-              src={`${imageBaseUrl}${consultant.gambar_nonbg}`}
-              alt={`${consultant.nama_gelar}`}
-              width={400}
-              height={400}
-              objectFit="cover"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
-      <Footer />
-    </main>
-  );
+        </section>
+        <Footer />
+      </main>
+    );
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return <div>Error fetching data.</div>;
+  }
+};
+
+export async function generateStaticParams() {
+  const apiUrl = "https://hayed-admin.com/api/consultant";
+  const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
+
+  try {
+    const response = await axios.get(apiUrl, {
+      headers: {
+        api_key: apiKey,
+      },
+    });
+    const informasiList = response.data.data;
+
+    return informasiList.map((informasi: { id: number }) => ({
+      id: informasi.id.toString(),
+    }));
+  } catch (error) {
+    console.error("Error fetching data for static params:", error);
+    return [];
+  }
 }
+
+export default InformasiDetail;

@@ -18,6 +18,8 @@ interface BannerData {
 
 const Banner = () => {
   const [banners, setBanners] = useState<BannerData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const apiUrl = "https://hayed-admin.com/api/banner";
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
   const imageBaseUrl = "http://hayed-admin.com/banner-images/";
@@ -32,12 +34,31 @@ const Banner = () => {
         });
         setBanners(response.data.data);
       } catch (error) {
-        console.error("Error fetching banner data:", error);
+        console.error("Error fetching events:", error);
+        setError("Failed to fetch data");
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchBanners();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="w-full h-screen text-center flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!banners || banners.length === 0) {
+    return <div>No Banners found</div>;
+  }
 
   return (
     <Swiper
@@ -66,8 +87,9 @@ const Banner = () => {
               objectFit="cover"
               loading="lazy"
             />
+            <div className="absolute inset-0 bg-black-original opacity-50 transition-opacity duration-500 ease-in-out group-hover:opacity-70"></div>
             <div className="absolute top-0 left-0 w-full h-full flex items-start justify-center mt-16 md:mt-20 lg:mt-24 xl:mt-28 px-6 md:px-12 lg:px-20 xl:px-28 pb-20 flex-col z-10 gap-y-4 max-w-full md:max-w-[80%] lg:max-w-[70%]">
-              <span className="text-white text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-center md:text-left">
+              <span className="text-white text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-left">
                 {banner.judul}
               </span>
               <span
