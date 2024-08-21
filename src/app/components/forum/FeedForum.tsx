@@ -5,6 +5,10 @@ import axios from "axios";
 import { formatDistanceToNow, parseISO } from "date-fns";
 import { Dialog } from "@headlessui/react";
 import { useRouter } from "next/navigation";
+import { ref, onValue, set, push } from "firebase/database";
+import { database } from "../../../../lib/firebase";
+import { toast } from "react-toastify";
+import { UserIcon } from "lucide-react";
 
 interface User {
   id: number;
@@ -12,7 +16,7 @@ interface User {
   email: string;
   email_verified_at: string | null;
   no_hp: string | null;
-  gambar: string | null;
+  gambar?: string | null;
   role: string;
   created_at: string;
   updated_at: string;
@@ -26,7 +30,7 @@ interface Comment {
   content: string;
   created_at: string | null;
   updated_at: string | null;
-  user: User;
+  user?: User;
 }
 
 interface Question {
@@ -36,7 +40,7 @@ interface Question {
   content: string | null;
   created_at: string | null;
   updated_at: string | null;
-  user: User;
+  user?: User;
   comments: Comment[];
 }
 
@@ -55,21 +59,32 @@ const FeedForum = () => {
     null
   );
   const router = useRouter();
-  const storedToken = localStorage.getItem("token");
+  const storedToken =
+    typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get("https://hayed-admin.com/api/forums", {
-          headers: {
-            Authorization: `Bearer ${storedToken}`,
-            api_key: apiKey,
-          },
-        });
+        const response = await axios.get(
+          "https://admin.hayedconsulting.com/api/forums",
+          {
+            headers: {
+              Authorization: `Bearer ${storedToken}`,
+              api_key: apiKey,
+            },
+          }
+        );
         if (response.data.status === "success") {
           const fetchedQuestions = response.data.data;
-          setQuestions(fetchedQuestions);
-          setTotalPages(Math.ceil(fetchedQuestions.length / itemsPerPage));
+
+          const sortedQuestions = fetchedQuestions.sort(
+            (a: any, b: any) =>
+              new Date(b.created_at).getTime() -
+              new Date(a.created_at).getTime()
+          );
+
+          setQuestions(sortedQuestions);
+          setTotalPages(Math.ceil(sortedQuestions.length / itemsPerPage));
         }
       } catch (error) {
         console.error("Error fetching questions:", error);
@@ -77,7 +92,7 @@ const FeedForum = () => {
     };
 
     fetchQuestions();
-  }, []);
+  }, [storedToken, apiKey, itemsPerPage]);
 
   const openModal = (question: Question) => {
     setSelectedQuestion(question);
@@ -103,13 +118,18 @@ const FeedForum = () => {
   const handleReplySubmit = async (forumId: number) => {
     const storedToken = localStorage.getItem("token");
     if (!storedToken) {
-      console.error("Token is not available");
+      setReplyContents((prevContents) => ({
+        ...prevContents,
+        [forumId]: "",
+      }));
+      closeModal();
+      toast.error("Please Login To Access Forum!");
       return;
     }
 
     try {
       const response = await axios.post(
-        `https://hayed-admin.com/api/forums/${forumId}/comments`,
+        `https://admin.hayedconsulting.com/api/forums/${forumId}/comments`,
         { content: replyContents[forumId] || "" },
         {
           headers: {
@@ -125,7 +145,7 @@ const FeedForum = () => {
           ...prevContents,
           [forumId]: "",
         }));
-        // Optionally, refresh the questions to include the new comment
+
         const updatedQuestions = questions.map((question) =>
           question.id === forumId
             ? {
@@ -135,7 +155,9 @@ const FeedForum = () => {
             : question
         );
         setQuestions(updatedQuestions);
-        router.refresh();
+        closeModal();
+        toast.success("Reply Sent Successfully!", { autoClose: 3000 });
+        // window.location.reload();
       } else {
         console.error("Error posting reply:", response.data);
       }
@@ -169,33 +191,25 @@ const FeedForum = () => {
             className="w-full bg-white p-4 flex flex-col border transition-all duration-300"
           >
             <div className="flex gap-x-6 w-full">
-              <div className="h-20 w-20 relative">
-                <Image
-                  src={
-                    question.user.gambar
-                      ? `https://hayed-admin.com/user-images/${question.user.gambar}`
-                      : "/seminar/bg.png"
-                  }
-                  alt="User"
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-full transition-transform duration-300 transform hover:scale-105"
-                />
+              <div className="bg-[#A9A5A9] text-white p-4 w-12 h-12 flex items-center justify-center rounded-full shadow-lg">
+                <UserIcon />
               </div>
               <div className="flex flex-col gap-y-2 w-full">
-                <p className="text-xl font-semibold transition-all duration-300 hover:text-blue-600">
+                <p className="text-md md:text-xl font-semibold transition-all duration-300">
                   {question.title}
                 </p>
-                <div className="flex gap-x-8 text-xs">
-                  <p>Ask by {question.user.name}</p>
-                  <p>{formatDate(question.created_at)}</p>
-                </div>
-                <div
-                  className="flex items-center mt-4 transition-all duration-700 transform cursor-pointer"
-                  onClick={() => openModal(question)}
-                >
-                  <p className="text-xs hover:underline">Lihat dan Balas</p>
-                  <BiChevronDown className="ml-1 transition-transform duration-700 transform" />
+                <div className="flex gap-x-8 text-[10px] md:text-xs justify-between">
+                  <div className="flex flex-col md:flex-row gap-x-16">
+                    <p>Ask by {question.user?.name}</p>
+                    <p>{formatDate(question.created_at)}</p>
+                  </div>
+                  <div
+                    className="flex items-center transition-all duration-700 transform cursor-pointer"
+                    onClick={() => openModal(question)}
+                  >
+                    <p className="hover:underline">See dan Reply</p>
+                    <BiChevronDown className="ml-1 transition-transform duration-700 transform" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -205,7 +219,6 @@ const FeedForum = () => {
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
           <form method="dialog">
-            {/* if there is a button in form, it will close the modal */}
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>
@@ -229,22 +242,12 @@ const FeedForum = () => {
               <div className="mt-4">
                 {selectedQuestion?.comments.map((comment) => (
                   <div className="flex gap-x-4 mb-4" key={comment.id}>
-                    <div className="w-12 h-12 relative">
-                      <Image
-                        src={
-                          comment.user.gambar
-                            ? `https://hayed-admin.com/user-images/${comment.user.gambar}`
-                            : "/seminar/bg.png"
-                        }
-                        alt="User"
-                        layout="fill"
-                        objectFit="cover"
-                        className="rounded-full transition-transform duration-300 transform hover:scale-105"
-                      />
+                    <div className="bg-[#A9A5A9] text-white p-4 w-12 h-12 flex items-center justify-center rounded-full shadow-lg">
+                      <UserIcon />
                     </div>
                     <div>
                       <p className="text-sm font-semibold">
-                        {comment.user.name}
+                        {comment.user?.name}
                       </p>
                       <p className="text-xs text-gray-500">
                         {formatDate(comment.created_at)}
@@ -293,17 +296,18 @@ const FeedForum = () => {
         </div>
       </Dialog>
       <div className="flex justify-center mt-4">
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            key={i}
-            onClick={() => handlePageChange(i + 1)}
-            className={`px-4 py-2 mx-1 border rounded ${
-              currentPage === i + 1 ? "bg-blue-500 text-white" : "bg-white"
-            }`}
-          >
-            {i + 1}
-          </button>
-        ))}
+        {totalPages > 1 &&
+          Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i}
+              onClick={() => handlePageChange(i + 1)}
+              className={`px-4 py-2 mx-1 border rounded ${
+                currentPage === i + 1 ? "bg-primary text-white" : "bg-white"
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
       </div>
     </div>
   );

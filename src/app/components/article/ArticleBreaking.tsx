@@ -14,9 +14,9 @@ interface ArticleData {
 
 const ArticleBreaking = () => {
   const [articles, setArticles] = useState<ArticleData[]>([]);
-  const apiUrl = "https://hayed-admin.com/api/berita-hangat";
+  const apiUrl = "https://admin.hayedconsulting.com/api/berita-hangat";
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
-  const imageBaseUrl = "http://hayed-admin.com/new-images/";
+  const imageBaseUrl = "http://admin.hayedconsulting.com/new-images/";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

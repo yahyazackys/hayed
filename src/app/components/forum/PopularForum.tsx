@@ -3,8 +3,10 @@ import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { formatDistanceToNow, parseISO } from "date-fns";
-import { Dialog } from "@headlessui/react";
+import { Dialog, DialogTitle } from "@headlessui/react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import { UserIcon } from "lucide-react";
 
 interface User {
   id: number;
@@ -26,7 +28,7 @@ interface Comment {
   content: string;
   created_at: string | null;
   updated_at: string | null;
-  user: User;
+  user?: User;
 }
 
 interface Question {
@@ -36,7 +38,7 @@ interface Question {
   content: string | null;
   created_at: string | null;
   updated_at: string | null;
-  user: User;
+  user?: User;
   comments: Comment[];
 }
 
@@ -55,13 +57,14 @@ const PopularForum = () => {
     null
   );
   const router = useRouter();
-  const storedToken = localStorage.getItem("token");
+  const storedToken =
+    typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
   useEffect(() => {
     const fetchForums = async () => {
       try {
         const response = await axios.get(
-          "https://hayed-admin.com/api/showforums",
+          "https://admin.hayedconsulting.com/api/forums",
           {
             headers: {
               Authorization: `Bearer ${storedToken}`,
@@ -106,13 +109,18 @@ const PopularForum = () => {
   const handleReplySubmit = async (forumId: number) => {
     const storedToken = localStorage.getItem("token");
     if (!storedToken) {
-      console.error("Token is not available");
+      setReplyContents((prevContents) => ({
+        ...prevContents,
+        [forumId]: "",
+      }));
+      closeModal();
+      toast.error("Please Login To Access Forum!");
       return;
     }
 
     try {
       const response = await axios.post(
-        `https://hayed-admin.com/api/forums/${forumId}/comments`,
+        `https://admin.hayedconsulting.com/api/forums/${forumId}/comments`,
         { content: replyContents[forumId] || "" },
         {
           headers: {
@@ -123,12 +131,11 @@ const PopularForum = () => {
         }
       );
       if (response.data.success) {
-        console.log("Reply posted successfully:", response.data.comment);
         setReplyContents((prevContents) => ({
           ...prevContents,
           [forumId]: "",
         }));
-        // Optionally, refresh the questions to include the new comment
+
         const updatedQuestions = questions.map((question) =>
           question.id === forumId
             ? {
@@ -138,7 +145,8 @@ const PopularForum = () => {
             : question
         );
         setQuestions(updatedQuestions);
-        router.refresh();
+        toast.success("Reply Sent Successfully!");
+        window.location.reload();
       } else {
         console.error("Error posting reply:", response.data);
       }
@@ -154,10 +162,6 @@ const PopularForum = () => {
     return `${relativeTime}`;
   };
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
   const displayedQuestions = questions.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -166,7 +170,7 @@ const PopularForum = () => {
   return (
     <div className="flex flex-col w-full xl:w-[40%] border p-8">
       <h2 className="text-3xl font-semibold text-start text-black mb-8">
-        #ForumPopuler
+        #PopularForum
       </h2>
       <div className="flex flex-col gap-y-8">
         {displayedQuestions.map((question, index) => (
@@ -175,32 +179,24 @@ const PopularForum = () => {
             className="w-full bg-white p-4 flex border hover:border-black-soft flex-col transition-all duration-300"
           >
             <div className="flex gap-x-6 w-full">
-              <div className="h-12 w-12 relative">
-                <Image
-                  src={
-                    question.user.gambar
-                      ? `https://hayed-admin.com/user-images/${question.user.gambar}`
-                      : "/seminar/bg.png"
-                  }
-                  alt="User"
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-full transition-transform duration-300 transform hover:scale-105"
-                />
+              <div className="bg-[#A9A5A9] text-white p-4 w-12 h-12 flex items-center justify-center rounded-full shadow-lg">
+                <UserIcon />
               </div>
               <div className="flex flex-col gap-y-2 w-full">
-                <p className="text-xl font-semibold transition-all duration-300">
+                <p className="text-md md:text-xl font-semibold transition-all duration-300">
                   {question.title}
                 </p>
-                <div className="flex gap-x-8 text-xs">
-                  <p>Ask by {question.user.name}</p>
+                <div className="flex gap-x-8 text-[10px] md:text-xs">
+                  <p>Ask by {question.user?.name}</p>
                   <p>{formatDate(question.created_at)}</p>
                 </div>
                 <div
                   className="flex items-center mt-4 transition-all duration-700 transform cursor-pointer"
                   onClick={() => openModal(question)}
                 >
-                  <p className="text-xs hover:underline">Lihat dan Balas</p>
+                  <p className="text-[10px] md:text-xs hover:underline">
+                    See and Reply
+                  </p>
                   <BiChevronDown className="ml-1 transition-transform duration-700 transform" />
                 </div>
               </div>
@@ -227,30 +223,20 @@ const PopularForum = () => {
       >
         <div className="fixed inset-0 flex items-center justify-center p-4">
           <div className="bg-white max-w-3xl w-full max-h-full p-6 space-y-4 border rounded-md shadow-md overflow-y-auto">
-            <Dialog.Title className="text-xl font-bold">
+            <DialogTitle className="text-xl font-bold">
               {selectedQuestion?.title}
-            </Dialog.Title>
+            </DialogTitle>
             <div className="text-sm overflow-y-auto max-h-80">
               <p>{selectedQuestion?.content}</p>
               <div className="mt-4">
                 {selectedQuestion?.comments.map((comment) => (
                   <div className="flex gap-x-4 mb-4" key={comment.id}>
-                    <div className="w-12 h-12 relative">
-                      <Image
-                        src={
-                          comment.user.gambar
-                            ? `https://hayed-admin.com/user-images/${comment.user.gambar}`
-                            : "/seminar/bg.png"
-                        }
-                        alt="User"
-                        layout="fill"
-                        objectFit="cover"
-                        className="rounded-full transition-transform duration-300 transform hover:scale-105"
-                      />
+                    <div className="bg-[#A9A5A9] text-white p-4 w-12 h-12 flex items-center justify-center rounded-full shadow-lg">
+                      <UserIcon />
                     </div>
                     <div>
                       <p className="text-sm font-semibold">
-                        {comment.user.name}
+                        {comment.user?.name}
                       </p>
                       <p className="text-xs text-gray-500">
                         {formatDate(comment.created_at)}

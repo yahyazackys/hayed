@@ -20,7 +20,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "https://hayed-admin.com/api/register",
+        "https://admin.hayedconsulting.com/api/register",
         {
           name: name,
           email: email,
@@ -63,17 +63,17 @@ const Register = () => {
           href={"/login"}
           className="mt-12 border border-white px-20 py-2 rounded-full text-white hover:bg-white hover:border-black-original hover:text-black-original hover:cursor-pointer"
         >
-          Masuk
+          Sign In
         </Link>
       </div>
       <div className="flex flex-col w-1/2 justify-center items-center">
-        <h1 className="text-[40px] font-bold mb-4">Register</h1>
+        <h1 className="text-[40px] font-bold mb-4">Sign Up</h1>
         {errors.general && (
           <p className="text-red-500">{errors.general.join(", ")}</p>
         )}
         <form onSubmit={handleSubmit} className="w-1/2">
           <div className="mb-4">
-            <label className="block mb-2">Nama</label>
+            <label className="block mb-2">Name</label>
             <input
               type="text"
               value={name}
@@ -99,19 +99,6 @@ const Register = () => {
             )}
           </div>
           <div className="mb-4">
-            <label className="block mb-2">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full border border-black-original px-4 py-2 bg-white rounded-full"
-              required
-            />
-            {errors.password && (
-              <p className="text-red-500">{errors.password.join(", ")}</p>
-            )}
-          </div>
-          <div className="mb-4">
             <label className="block mb-2">No Handphone</label>
             <input
               type="text"
@@ -124,11 +111,24 @@ const Register = () => {
               <p className="text-red-500">{errors.no_hp.join(", ")}</p>
             )}
           </div>
+          <div className="mb-4">
+            <label className="block mb-2">Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full border border-black-original px-4 py-2 bg-white rounded-full"
+              required
+            />
+            {errors.password && (
+              <p className="text-red-500">{errors.password.join(", ")}</p>
+            )}
+          </div>
           <button
             type="submit"
             className="bg-[#00213F] w-full text-white px-20 rounded-full py-3 hover:bg-white border hover:border-black-original hover:text-black-original"
           >
-            Daftar
+            Sign Up
           </button>
         </form>
       </div>

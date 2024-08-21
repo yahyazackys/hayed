@@ -16,9 +16,9 @@ const ArticleNew = () => {
   const [articles, setArticles] = useState<ArticleData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const apiUrl = "https://hayed-admin.com/api/berita-terbaru";
+  const apiUrl = "https://admin.hayedconsulting.com/api/berita-terbaru";
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
-  const imageBaseUrl = "https://hayed-admin.com/new-images/";
+  const imageBaseUrl = "https://admin.hayedconsulting.com/new-images/";
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -59,7 +59,7 @@ const ArticleNew = () => {
   return (
     <div className="flex flex-col w-full xl:w-[40%]">
       <h2 className="text-3xl font-semibold text-start text-black mb-8">
-        Berita Teratas
+        Top News
       </h2>
       <div className="flex flex-col w-full bg-white p-4 rounded-xl shadow-lg shadow-slate-200">
         <div className="flex flex-col gap-y-4">

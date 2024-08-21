@@ -1,44 +1,38 @@
 export const navData = [
-  { name: "Beranda", path: "/" },
+  { name: "Home", path: "/" },
   {
-    name: "Tentang Kami",
+    name: "About Us",
     subMenu: [
-      { name: "Visi, Misi dan Nilai", path: "/vision-mission-value" },
-      { name: "Konsultan", path: "/consultant" },
+      { name: "Vision, Mission and Value", path: "/vision-mission-value" },
+      { name: "Consultant", path: "/consultant" },
     ],
   },
   {
-    name: "Layanan",
+    name: "Service",
     subMenu: [
-      { name: "Seminar dan Kegiatan", path: "/seminar-and-activity" },
+      { name: "Accounting", path: "/service/accounting" },
       {
-        name: "Servis",
-        subMenu: [
-          { name: "Akuntansi", path: "/service/accounting" },
-          {
-            name: "Perpajakan",
-            path: "/service/taxation",
-          },
-          //   { name: "Audit", path: "/service/auditing" },
-          {
-            name: "Penasihat Bisnis",
-            path: "/service/business-advisory",
-          },
-          {
-            name: "Pelatihan Bisnis",
-            path: "/service/business-training",
-          },
-        ],
+        name: "Tax",
+        path: "/service/taxation",
       },
+      {
+        name: "Business Advisory",
+        path: "/service/business-advisory",
+      },
+      {
+        name: "Business Training",
+        path: "/service/business-training",
+      },
+      { name: "Seminar and Activity", path: "/seminar-and-activity" },
     ],
   },
   {
-    name: "Karir",
+    name: "Career",
     subMenu: [
-      { name: "Lowongan Pekerjaan", path: "/job-vacancy" },
-      { name: "Program dan Kegiatan", path: "/program-and-activity" },
+      { name: "Job vacancy", path: "/job-vacancy" },
+      { name: "Programs and Activities", path: "/program-and-activity" },
     ],
   },
-  { name: "Artikel", path: "/article" },
+  { name: "Article", path: "/article" },
   { name: "Forum", path: "/forum" },
 ];

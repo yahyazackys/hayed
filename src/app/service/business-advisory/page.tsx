@@ -12,7 +12,7 @@ export default function Page() {
 
       <div className="w-full h-screen relative">
         <Image
-          src="/seminar/bg.png"
+          src="/service/business-advisory/bg.png"
           alt="Background image"
           fill
           objectFit="cover"
@@ -32,7 +32,7 @@ export default function Page() {
       <div className="flex flex-col lg:flex-row w-full justify-between py-10 px-6 md:px-12 lg:px-40">
         <div className="flex flex-col w-1/4 items-center lg:items-start mb-10 lg:mb-0">
           <Image
-            src="/service/advisory-icon.png"
+            src="/service/business-advisory/icon.png"
             alt="Background image"
             width={100}
             height={100}
@@ -42,122 +42,120 @@ export default function Page() {
           />
         </div>
         <div className="flex flex-col items-start text-black w-full lg:w-1/2 gap-y-4 justify-center">
-          <h2 className="text-3xl font-bold">APA ITU PENASIHAT BISNIS?</h2>
+          <h2 className="text-3xl font-bold">WHAT IS A BUSINESS ADVISOR?</h2>
           <p className="text-lg font-normal text-justify">
-            Layanan ini berfokus pada memberikan nasihat strategis, saran, dan
-            panduan untuk membantu perusahaan mencapai tujuan bisnis mereka
-            dengan lebih efektif dan efisien. Kami akan membantu perusahaan Anda
-            dalam mengatasi tantangan, merencanakan pertumbuhan, dan
-            meningkatkan kinerja perusahaan. Kami berharap dapat membantu
-            perusahaan untuk menjalankan operasi dengan lebih efektif, meraih
-            pertumbuhan berkelanjutan, dan tetap kompetitif dalam lingkungan
-            bisnis yang dinamis.
+            This service focuses on providing strategic advice, suggestions, and
+            a guide to help companies achieve their business goals more
+            effectively and efficiently. We will help your company in overcoming
+            challenges, planning growth, and improve company performance. We
+            hope to help company to run operations more effectively, achieve
+            sustainable growth, and remain competitive in the environment
+            dynamic business.
           </p>
         </div>
       </div>
 
       <div className="flex flex-col lg:flex-row w-full justify-between px-6 md:px-12 lg:px-40 py-20">
         <div className="flex flex-col w-full lg:w-1/2 text-black gap-y-2 lg:pr-24 mb-10 lg:mb-0">
-          <h2 className="text-3xl font-bold">KAMI MELAYANI :</h2>
+          <h2 className="text-3xl font-bold">WE SERVE :</h2>
 
           <ul className="list-disc text-justify gap-y-4 flex flex-col">
             <li>
               <b>
-                Penasihat Peraturan Ketenagakerjaan
+                Labor Regulation Advisor
                 <br />
               </b>
-              Memberikan nasihat dan panduan kepada perusahaan atau organisasi
-              tentang cara mematuhi peraturan ketenagakerjaan yang berlaku dalam
-              lingkup hukum yang relevan.
+              Provide advice and guidance to companies or organizations on how
+              to comply with applicable labor regulations within the scope of
+              relevant laws.
             </li>
 
             <li>
               <b>
-                Pendirian bisnis baru
+                New Business Establishment
                 <br />
               </b>
-              Proses ini melibatkan berbagai tahapan, perencanaan, dan tindakan
-              yang harus dilakukan untuk mengubah ide bisnis menjadi kenyataan.
+              This process involves various stages, planning, and actions that
+              must be taken to turn a business idea into reality.
             </li>
 
             <li>
               <b>
-                Penasehat gaji
+                Payroll Advisory
                 <br />
               </b>
-              Kami memastikan bahwa proses penggajian berjalan dengan lancar,
-              akurat, dan sesuai dengan ketentuan hukum yang berlaku.
+              We ensure that the payroll process runs smoothly, accurately, and
+              in accordance with applicable legal provisions.
             </li>
 
             <li>
               <b>
-                Layanan Pasar Modal (IPO Jasa)
+                Capital Market Services (IPO Services)
                 <br />
               </b>
-              Layanan ini berfokus pada memberikan panduan dan dukungan kepada
-              perusahaan yang ingin mencatatkan sahamnya di bursa saham. Proses
-              IPO yang kompleks dan diatur oleh peraturan-peraturan yang ketat
-              membutuhkan perencanaan dan pelaksanaan yang hati-hati. Selain
-              itu, kami membantu perusahaan untuk menghadapi tantangan dan
-              memaksimalkan peluang dalam mengakses pasar modal.
+              This service focuses on providing guidance and support to
+              companies looking to list their shares on the stock exchange. The
+              IPO process is complex and governed by strict regulations that
+              require careful planning and execution. In addition, we help
+              companies overcome challenges and maximize opportunities in
+              accessing the capital market.
             </li>
 
             <li>
               <b>
-                Manajemen risiko perusahaan
+                Enterprise Risk Management
                 <br />
               </b>
-              Representasi perusahaan dalam melindungi aset, mengurangi
-              kemungkinan kerugian, dan meningkatkan kemungkinan kesuksesan
-              dalam mencapai sasaran bisnis.
+              The representation of companies in protecting assets, reducing the
+              probability of loss, and increasing the likelihood of success in
+              achieving business goals.
             </li>
 
             <li>
               <b>
-                Peningkatan performa
+                Performance Improvement
                 <br />
               </b>
-              Merujuk pada usaha dan tindakan yang diambil untuk meningkatkan
-              kinerja, efisiensi, produktivitas, dan hasil kerja baik dalam
-              konteks individu, tim, atau organisasi secara keseluruhan.
-              Bertujuan agar dapat mencapai hasil yang lebih baik dan mencapai
-              tujuan yang telah ditetapkan.
+              Refers to the efforts and actions taken to improve performance,
+              efficiency, productivity, and work results, whether in the context
+              of an individual, team, or the organization as a whole. Aims to
+              achieve better results and reach the goals that have been set.
             </li>
 
             <li>
               <b>
-                Efektivitas fungsi keuangan
+                Effectiveness of the Finance Function
                 <br />
               </b>
-              Perusahaan sangat penting untuk menjaga kesehatan keuangan,
-              pengelolaan aset, dan pencapaian tujuan bisnis. Fungsi keuangan
-              mencakup berbagai aspek, termasuk perencanaan keuangan,
-              pengelolaan arus kas, pelaporan keuangan, pengelolaan risiko
-              keuangan, dan pengambilan keputusan investasi.
+              It is critical for companies to maintain financial health, manage
+              assets, and achieve business objectives. The finance function
+              covers various aspects, including financial planning, cash flow
+              management, financial reporting, financial risk management, and
+              investment decision-making.
             </li>
 
             <li>
               <b>
-                Persiapan dan pengembangan dari prosedur operasi standar
+                Preparation and Development of Standard Operating Procedures
                 <br />
               </b>
-              Merupakan langkah penting dalam menjaga konsistensi, efisiensi,
-              dan kualitas dalam operasi bisnis. Hal ini disertai dengan dokumen
-              yang menguraikan langkah-langkah yang harus diikuti untuk
-              menyelesaikan suatu tugas atau aktivitas dengan cara yang
-              konsisten dan sesuai dengan standar yang ditetapkan.
+              An important step in maintaining consistency, efficiency, and
+              quality in business operations. It is accompanied by a document
+              that outlines the steps to be followed to accomplish a task or
+              activity in a consistent manner and in accordance with established
+              standards.
             </li>
 
             <li>
               <b>
-                Persiapan dan bantuan dengan laporan tahunan perusahaan
+                Preparation and Assistance with Company Annual Reports
                 <br />
               </b>
-              Bagian ini penting untuk memberikan gambaran menyeluruh tentang
-              kinerja keuangan, pencapaian, dan aktivitas bisnis selama satu
-              tahun. Laporan tahunan merupakan alat komunikasi penting kepada
-              pemangku kepentingan, termasuk pemegang saham, investor, klien,
-              pemasok, serta regulator.
+              This section is important to provide a comprehensive overview of
+              the financial performance, achievements, and activities of the
+              business during the year. The annual report is an important
+              communication tool for stakeholders, including shareholders,
+              investors, clients, suppliers, and regulators.
             </li>
           </ul>
         </div>

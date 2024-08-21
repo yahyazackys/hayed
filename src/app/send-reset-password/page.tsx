@@ -17,7 +17,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post(
-        "https://hayed-admin.com/api/send-reset-password",
+        "https://admin.hayedconsulting.com/api/send-reset-password",
         {
           email,
         }

@@ -16,7 +16,7 @@ interface Job {
 export default function Page() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
-  const apiUrl = "https://hayed-admin.com/api/lowongan-pekerjaan";
+  const apiUrl = "https://admin.hayedconsulting.com/api/lowongan-pekerjaan";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -30,7 +30,7 @@ export default function Page() {
         });
         setJobs(response.data.data);
       } catch (error) {
-        console.error("Error fetching events:", error);
+        console.error("Error fetching jobs:", error);
         setError("Failed to fetch data");
       } finally {
         setLoading(false);
@@ -40,6 +40,18 @@ export default function Page() {
     fetchJobs();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
     <main className="w-full h-full">
       <Header />
@@ -47,24 +59,23 @@ export default function Page() {
         <div className="flex flex-col md:flex-row justify-between items-center w-full">
           <div className="md:w-1/2 flex flex-col justify-center text-center md:text-left mb-8 md:mb-0">
             <h2 className="text-4xl font-bold mb-3 text-black">
-              Mengapa Anda Harus Bergabung Di Hayed Consulting ?
+              Why should you join Hayed Consulting?
             </h2>
-            <p className="max-w-lg text-black font-light text-justify">
-              Hayed Consulting adalah perusahaan yang menawarkan layanan
-              profesional kepada klien dan bisnis dari semua ukuran. Keduanya
-              komersial dan pribadi. Kami bertujuan untuk membangun hubungan,
-              kepercayaan, dan kesuksesan klien kami karena pertumbuhan klien
-              adalah pertumbuhan kami. Visi kami adalah menjadi Terkemuka
-              Konsultan dan Pusat Pengetahuan di bidang Perpajakan, Akuntansi,
-              dan Manajemen Bisnis.
+            <p className="max-w-2xl text-black font-light text-justify">
+              Hayed Consulting is a company that offers professional services to
+              clients and businesses of all sizes. Both commercial and private.
+              We aim to build relationships, trust, and success for our clients
+              because client growth is our growth. Our vision is to be the
+              leading consultant and knowledge center in taxation, accounting,
+              and business management.
             </p>
           </div>
           <div className="md:flex justify-center hidden">
             <Image
-              src="/job.png"
-              alt="Vision Image"
+              src="/consultant/consultant.png"
+              alt="Consultant Image"
               width={500}
-              height={100}
+              height={400}
               objectFit="cover"
             />
           </div>
@@ -78,30 +89,34 @@ export default function Page() {
         <div className="flex flex-col w-full items-center gap-y-8">
           <div className="flex flex-col items-center">
             <h2 className="text-3xl font-semibold text-start ml-3 text-black">
-              Daftar List Lowongan Pekerjaan
+              List of Job Vacancies
             </h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-16 mt-8 w-full">
-            {jobs.map((job) => (
-              <Link
-                href={`/job-vacancy/${job.id}`}
-                key={job.id}
-                className="flex items-center shadow-md rounded-xl"
-              >
-                <Image
-                  src={"/logo-2.png"}
-                  alt={job.nama_pekerjaan}
-                  width={140}
-                  height={36}
-                  objectFit="cover"
-                  className="mx-4"
-                />
-                <p className="font-normal text-white text-center text-sm bg-[#00213F] p-10 rounded-r-xl">
-                  {job.nama_pekerjaan}
-                </p>
-              </Link>
-            ))}
-          </div>
+          {jobs.length === 0 ? (
+            <p>There are currently no job vacancies available</p>
+          ) : (
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-16 mt-4 w-full">
+              {jobs.map((job) => (
+                <Link
+                  href={`/job-vacancy/${job.id}`}
+                  key={job.id}
+                  className="flex items-center shadow-md rounded-xl"
+                >
+                  <Image
+                    src={"/logo-2.png"}
+                    alt={job.nama_pekerjaan}
+                    width={140}
+                    height={36}
+                    objectFit="cover"
+                    className="mx-4"
+                  />
+                  <p className="font-normal text-white text-center text-sm bg-[#00213F] p-10 rounded-r-xl">
+                    {job.nama_pekerjaan}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <Footer />

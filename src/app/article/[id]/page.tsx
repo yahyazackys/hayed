@@ -5,9 +5,9 @@ import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
 
 const InformasiDetail = async ({ params }: { params: { id: string } }) => {
-  const apiUrl = `https://hayed-admin.com/api/berita/${params.id}/detail`;
+  const apiUrl = `https://admin.hayedconsulting.com/api/berita/${params.id}/detail`;
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
-  const imageBaseUrl = "http://hayed-admin.com/new-images/";
+  const imageBaseUrl = "http://admin.hayedconsulting.com/new-images/";
 
   try {
     const response = await axios.get(apiUrl, {
@@ -63,7 +63,7 @@ const InformasiDetail = async ({ params }: { params: { id: string } }) => {
 };
 
 export async function generateStaticParams() {
-  const apiUrl = "https://hayed-admin.com/api/berita";
+  const apiUrl = "https://admin.hayedconsulting.com/api/berita";
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
 
   try {

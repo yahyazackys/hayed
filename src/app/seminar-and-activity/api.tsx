@@ -18,7 +18,7 @@ interface Event {
 }
 
 export default function Event({ event }: Event) {
-  const imageBaseUrl = "http://hayed-admin.com/event-images/";
+  const imageBaseUrl = "http://admin.hayedconsulting.com/event-images/";
 
   if (!event) {
     return (

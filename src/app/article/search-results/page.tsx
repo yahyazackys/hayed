@@ -26,13 +26,13 @@ const SearchResults = () => {
 
   const searchParams = useSearchParams();
   const keyword = searchParams.get("keyword") || "";
-  const imageBaseUrl = "http://hayed-admin.com/new-images/";
+  const imageBaseUrl = "http://admin.hayedconsulting.com/new-images/";
 
   useEffect(() => {
     console.log("Keyword:", keyword);
     const fetchSearchResults = async () => {
       try {
-        const apiUrl = `https://hayed-admin.com/api/berita/search?keyword=${encodeURIComponent(
+        const apiUrl = `https://admin.hayedconsulting.com/api/berita/search?keyword=${encodeURIComponent(
           keyword
         )}`;
         const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";

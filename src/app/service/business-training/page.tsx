@@ -12,7 +12,7 @@ export default function Page() {
 
       <div className="w-full h-screen relative">
         <Image
-          src="/seminar/bg.png"
+          src="/service/business-training/bg.png"
           alt="Background image"
           fill
           objectFit="cover"
@@ -32,7 +32,7 @@ export default function Page() {
       <div className="flex flex-col lg:flex-row w-full justify-between py-10 px-6 md:px-12 lg:px-40">
         <div className="flex flex-col w-1/4 items-center lg:items-start mb-10 lg:mb-0">
           <Image
-            src="/service/business-icon.png"
+            src="/service/business-training/icon.png"
             alt="Background image"
             width={100}
             height={100}
@@ -42,72 +42,70 @@ export default function Page() {
           />
         </div>
         <div className="flex flex-col items-start text-black w-full lg:w-1/2 gap-y-4 justify-center">
-          <h2 className="text-3xl font-bold">APA ITU BISNIS PELATIHAN?</h2>
+          <h2 className="text-3xl font-bold">WHAT IS A TRAINING BUSINESS?</h2>
           <p className="text-lg font-normal text-justify">
-            Layanan ini berisi serangkaian kegiatan yang bertujuan untuk
-            mengembangkan pengetahuan, keterampilan, dan kompetensi seseorang
-            atau kelompok dalam suatu bidang tertentu. Pelatihan dapat
-            diselenggarakan oleh berbagai jenis organisasi, termasuk perusahaan,
-            institusi pendidikan, lembaga pemerintah, dan penyedia layanan
-            pelatihan independen. Tujuan utama dari layanan pelatihan adalah
-            meningkatkan kemampuan individu atau kelompok sehingga mereka dapat
-            bekerja lebih efektif dan produktif.
+            This service contains a series of activities aimed at develop one's
+            knowledge, skills and competencies or group in a particular field.
+            Training can organized by various types of organizations, including
+            corporations, educational institutions, government agencies, and
+            service providers independent training. The main aim of the training
+            service is improve the abilities of individuals or groups so that
+            they can work more effectively and productively.
           </p>
         </div>
       </div>
 
       <div className="flex flex-col lg:flex-row w-full justify-between px-6 md:px-12 lg:px-40 py-20">
         <div className="flex flex-col w-full lg:w-1/2 text-black gap-y-2 lg:pr-24 mb-10 lg:mb-0">
-          <h2 className="text-3xl font-bold">KAMI MELAYANI :</h2>
+          <h2 className="text-3xl font-bold">WE SERVE :</h2>
 
           <ul className="list-disc text-justify gap-y-4 flex flex-col">
             <li>
               <b>
-                Seminar dan Pelatihan Akuntansi
+                Accounting Seminar and Training
                 <br />
               </b>
-              Mencakup upaya untuk berbagi pengetahuan dan pengalaman di bidang
-              akuntansi melalui penyelenggaraan seminar, workshop, atau
-              pelatihan. Tujuan dari jasa ini adalah untuk memberikan informasi
-              terbaru tentang peraturan, praktik, dan tren akuntansi kepada
-              peserta sehingga mereka dapat meningkatkan keterampilan dan
-              pemahaman mereka.
+              Covers efforts to share knowledge and experience in the field of
+              accounting through organizing seminars, workshops, or training.
+              The purpose of this service is to provide participants with the
+              latest information on accounting regulations, practices, and
+              trends so that they can improve their skills and understanding.
             </li>
 
             <li>
               <b>
-                Seminar dan Pelatihan Perpajakan
+                Taxation Seminar and Training
                 <br />
               </b>
-              Seminar dan pelatihan khusus tentang isu-isu perpajakan, termasuk
-              Pajak Pertambahan Nilai (PPN). Peserta akan diberikan informasi
-              mengenai peraturan dan praktik perpajakan terkini agar mereka
-              dapat mengelola pajak secara efisien dan sesuai dengan peraturan
-              yang berlaku.
+              Specialized seminars and training on taxation issues, including
+              value-added tax (VAT). Participants will be provided with
+              information on the latest tax regulations and practices so that
+              they can manage their taxes efficiently and in accordance with
+              applicable regulations.
             </li>
 
             <li>
               <b>
-                Pelatihan VAT
+                VAT Training
                 <br />
               </b>
-              Membekali peserta dengan pengetahuan mendalam tentang peraturan
-              perpajakan PPN, metode perhitungan, prosedur pengajuan, dan
-              kepatuhan pajak yang relevan. Konsep dasar PPN, klasifikasi
-              transaksi yang kena pajak, tarif PPN yang berlaku, serta
-              persyaratan administrasi dan pelaporan yang harus dipenuhi.
+              Equip participants with in-depth knowledge of relevant VAT tax
+              regulations, calculation methods, filing procedures, and tax
+              compliance. Basic concepts of VAT, classification of taxable
+              transactions, applicable VAT rates, and administrative and
+              reporting requirements that must be met.
             </li>
 
             <li>
               <b>
-                Brevet A,B, & C
+                Brevet A, B, & C
                 <br />
               </b>
-              Program pelatihan dan persiapan ujian untuk sertifikasi Brevet A,
-              B, dan C, yang merupakan sertifikasi profesi di bidang perpajakan.
-              Program ini membekali peserta dengan pengetahuan dan keterampilan
-              yang diperlukan untuk berhasil dalam ujian sertifikasi dan menjadi
-              profesional pajak yang berkualifikasi.
+              Training and exam preparation program for Brevet A, B, and C
+              certifications, which are professional certifications in taxation.
+              This program equips participants with the knowledge and skills
+              necessary to succeed in the certification exam and become
+              qualified tax professionals.
             </li>
           </ul>
         </div>

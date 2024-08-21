@@ -1,13 +1,11 @@
 import Image from "next/image";
 import axios from "axios";
-import { Montserrat, Poppins } from "next/font/google";
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
 
 const InformasiDetail = async ({ params }: { params: { id: string } }) => {
-  const apiUrl = `https://hayed-admin.com/api/lowongan-pekerjaan/${params.id}/detail`;
+  const apiUrl = `https://admin.hayedconsulting.com/api/lowongan-pekerjaan/${params.id}/detail`;
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
-  const imageBaseUrl = "http://stitmuaraenim-admin.com/new-images/";
 
   try {
     const response = await axios.get(apiUrl, {
@@ -58,7 +56,7 @@ const InformasiDetail = async ({ params }: { params: { id: string } }) => {
 };
 
 export async function generateStaticParams() {
-  const apiUrl = "https://hayed-admin.com/api/lowongan-pekerjaan";
+  const apiUrl = "https://admin.hayedconsulting.com/api/lowongan-pekerjaan";
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
 
   try {

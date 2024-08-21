@@ -81,35 +81,32 @@ const ProgramSection = () => {
           <div className="w-full md:w-1/2 lg:w-[45%] flex flex-col items-center">
             <h3 className="text-2xl font-extrabold text-white mb-4">Program</h3>
             {programFaqs.map((faq, index) => (
-              <div
-                key={index}
-                className="collapse collapse-plus bg-transparent mb-4 w-full"
-              >
-                <input
-                  type="radio"
-                  name="accordion"
-                  id={`accordion-radio-program-${index}`}
-                  className="hidden"
-                />
-                <label
-                  onClick={() => toggleAccordion(index)}
-                  className={`collapse-title text-xl font-medium cursor-pointer ${
-                    activeIndex === index
-                      ? "bg-white text-black"
-                      : "text-white bg-transparent"
-                  }`}
-                  htmlFor={`accordion-radio-program-${index}`}
-                >
-                  {faq.question}
-                </label>
+              <div key={index} className="w-full mb-4">
                 <div
-                  className={`collapse-content ${
+                  onClick={() => toggleAccordion(index)}
+                  className={`cursor-pointer transition-colors duration-300 p-4 rounded-t-lg ${
                     activeIndex === index
-                      ? "bg-white transition-max-h duration-500 ease-out max-h-[500px]"
-                      : "max-h-0"
-                  } overflow-hidden`}
+                      ? "bg-white text-black-original"
+                      : "bg-transparent text-white"
+                  }`}
                 >
-                  <p className="text-black p-4">{faq.answer}</p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[16px] md:text-xl font-medium">
+                      {faq.question}
+                    </span>
+                    <span className="text-xl">
+                      {activeIndex === index ? "-" : "+"}
+                    </span>
+                  </div>
+                </div>
+                <div
+                  className={`overflow-hidden transition-max-height duration-500 rounded-b-lg ease-in-out ${
+                    activeIndex === index
+                      ? "max-h-[200px] bg-white p-4"
+                      : "max-h-0"
+                  }`}
+                >
+                  <p className="text-black">{faq.answer}</p>
                 </div>
               </div>
             ))}

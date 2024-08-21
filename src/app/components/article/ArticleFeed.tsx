@@ -23,9 +23,9 @@ const ArticleFeed = () => {
   const [articles, setArticles] = useState<ArticleData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const apiUrl = "https://hayed-admin.com/api/berita-terbaru";
+  const apiUrl = "https://admin.hayedconsulting.com/api/berita-terbaru";
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
-  const imageBaseUrl = "https://hayed-admin.com/new-images/";
+  const imageBaseUrl = "https://admin.hayedconsulting.com/new-images/";
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -85,7 +85,7 @@ const ArticleFeed = () => {
     <div className="flex flex-col w-full xl:w-[60%]">
       <div className="flex justify-between w-full mb-8 items-center">
         <h2 className="text-3xl font-semibold text-start text-black">
-          Feed Berita
+          News Feed
         </h2>
         <div className="relative">
           <div className="dropdown dropdown-end dropdown-hover text-black-soft">
@@ -95,7 +95,7 @@ const ArticleFeed = () => {
                 tabIndex={0}
                 className="bg-white text-black-soft hover:cursor-pointer"
               >
-                Pilih Servis
+                Select Service
               </p>
             </div>
             <ul
@@ -103,9 +103,7 @@ const ArticleFeed = () => {
               className="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box"
             >
               <li>
-                <button onClick={() => handleServiceClick(null)}>
-                  Semua Berita
-                </button>
+                <button onClick={() => handleServiceClick(null)}>All</button>
               </li>
               {uniqueServices.map((service) => (
                 <li key={service.id}>

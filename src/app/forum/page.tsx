@@ -22,13 +22,12 @@ export default function Page() {
           className="z-0"
           loading="eager"
         />
-        {/* <div className="absolute inset-0 bg-black-original opacity-40 rounded-lg transition-opacity duration-100 ease-in-out"></div> */}
-        <div className="absolute w-full h-full flex items-center justify-center mt-8 md:mt-12 lg:mt-16 xl:mt-20 px-6 md:px-12 lg:px-20 xl:px-28 pb-20 flex-col z-20 gap-y-4 max-w-full">
+        <div className="absolute w-full h-full flex items-center justify-center mt-8 md:mt-12 lg:mt-16 xl:mt-20 px-6 md:px-12 lg:px-20 xl:px-28 pb-20 flex-col z-20 gap-y-2 max-w-full">
           <span className="text-white text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-center">
-            Selamat Datang Di Forum
+            Welcome to the Forum
           </span>
           <span className="text-white text-md md:text-lg xl:text-xl font-extralight text-center">
-            Kami Selalu Siap Membantumu
+            We are always ready to help you
           </span>
           <SearchForum />
         </div>

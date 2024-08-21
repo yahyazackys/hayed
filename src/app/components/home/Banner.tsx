@@ -20,9 +20,9 @@ const Banner = () => {
   const [banners, setBanners] = useState<BannerData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const apiUrl = "https://hayed-admin.com/api/banner";
+  const apiUrl = "https://admin.hayedconsulting.com/api/banner";
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
-  const imageBaseUrl = "http://hayed-admin.com/banner-images/";
+  const imageBaseUrl = "http://admin.hayedconsulting.com/banner-images/";
 
   useEffect(() => {
     const fetchBanners = async () => {

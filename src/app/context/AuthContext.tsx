@@ -21,7 +21,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [token, setTokenState] = useState<string | null>(null);
   const [user, setUserState] = useState<string | null>(null);
 
-  // Ambil token dan user dari local storage saat komponen dimuat
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     const storedUser = localStorage.getItem("user");
@@ -33,13 +32,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
-  // Fungsi untuk set token dan simpan ke local storage
   const setToken = (token: string) => {
     localStorage.setItem("token", token);
     setTokenState(token);
   };
 
-  // Fungsi untuk set user dan simpan ke local storage
   const setUser = (user: string) => {
     localStorage.setItem("user", user);
     setUserState(user);

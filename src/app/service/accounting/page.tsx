@@ -12,14 +12,14 @@ export default function Page() {
 
       <div className="w-full h-screen relative">
         <Image
-          src="/seminar/bg.png"
+          src="/service/accounting/bg.png"
           alt="Background image"
           fill
           objectFit="cover"
           className="z-0"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-black-original opacity-40 rounded-lg transition-opacity duration-100 ease-in-out"></div>
+        <div className="absolute inset-0 bg-black-original opacity-50 rounded-lg transition-opacity duration-100 ease-in-out"></div>
         <div className="absolute top-0 left-0 w-full h-full flex items-start justify-center mt-8 md:mt-12 lg:mt-16 xl:mt-20 px-6 md:px-12 lg:px-20 xl:px-28 pb-20 flex-col z-20 gap-y-4 max-w-full md:max-w-[80%] lg:max-w-[70%]">
           <span className="text-white text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-left">
             Bingung cara membuat laporan keuangan?
@@ -33,7 +33,7 @@ export default function Page() {
       <div className="flex flex-col lg:flex-row w-full justify-between py-8 md:py-10 px-6 md:px-12 lg:px-40">
         <div className="hidden md:flex flex-col w-1/4 items-center lg:items-start mb-10 lg:mb-0">
           <Image
-            src="/service/accounting-icon.png"
+            src="/service/accounting/icon.png"
             alt="Background image"
             width={100}
             height={100}
@@ -44,7 +44,7 @@ export default function Page() {
         </div>
         <div className="max-md:flex md:hidden flex-col items-center justify-center w-full mb-10 lg:mb-0">
           <Image
-            src="/service/accounting-icon.png"
+            src="/service/accounting/icon.png"
             alt="Background image"
             width={200}
             height={100}
@@ -53,73 +53,74 @@ export default function Page() {
         </div>
         <div className="flex flex-col items-start text-black w-full lg:w-1/2 gap-y-4 justify-center">
           <h2 className=" text-2xl md:text-3xl font-bold">
-            APA ITU JASA AKUNTANSI?
+            WHAT ARE ACCOUNTING SERVICES?
           </h2>
           <p className="text-[16px] md:text-lg font-normal text-justify">
-            Layanan ini memastikan bahwa keuangan perusahaan terkelola dengan
-            baik, akurat, dan sesuai dengan standar akuntansi yang berlaku.
-            Selain itu, layanan ini mencakup berbagai aktivitas, termasuk
-            pencatatan transaksi keuangan, pelaporan keuangan, perencanaan
-            pajak, analisis kinerja keuangan, serta konsultasi keuangan.
+            This service ensures that the company's finances are well managed
+            good, accurate, and in accordance with applicable accounting
+            standards. Additionally, the service covers a wide range of
+            activities, including recording financial transactions, financial
+            reporting, planning taxes, financial performance analysis, and
+            financial consulting.
           </p>
         </div>
       </div>
 
       <div className="flex flex-col lg:flex-row w-full justify-between px-6 md:px-12 lg:px-40 py-8 md:py-20">
         <div className="flex flex-col w-full lg:w-1/2 text-black gap-y-2 lg:pr-24 mb-10 lg:mb-0">
-          <h2 className="text-2xl md:text-3xl font-bold">KAMI MELAYANI :</h2>
+          <h2 className="text-2xl md:text-3xl font-bold">OUR SERVICE :</h2>
 
           <ul className="text-[16px] list-disc text-justify gap-y-4 flex flex-col">
             <li>
               <b>
-                Review Struktur Pengendalian Internal dan Sistem Informasi
-                Keuangan
+                Review of Internal Control Structure and Information Systems
+                Finance.
                 <br />
               </b>
-              Mengidentifikasi potensi risiko dan kelemahan dalam sistem agar
-              perusahaan dapat meningkatkan efisiensi profesional dan keandalan
-              laporan keuangan.
+              Identify potential risks and weaknesses in the agar system The
+              company can improve professional efficiency and reliability
+              financial statements.
             </li>
             <li>
               <b>
-                Saran Akuntansi dan Peraturan tentang GAAP dan IFRS Indonesia
+                Accounting Advice and Regulations on Indonesian GAAP and IFRS
                 <br />
               </b>
-              Panduan dan penjelasan tentang penerapan Standar Akuntansi
-              Keuangan Indonesia (SAK) atau International Financial Reporting
-              Standards (IFRS) di Indonesia.
+              Guidance and explanation regarding the application of Accounting
+              Standards Indonesian Finance (SAK) or International Financial
+              Reporting Standards (IFRS) in Indonesia.
             </li>
             <li>
               <b>
-                Pelaporan Kinerja, Prakiraan dan Proyeksi
+                Performance Reporting, Forecasts, and Projections
                 <br />
               </b>
-              Penyusunan laporan kinerja perusahaan, termasuk analisis data
-              historis, peramalan masa depan, dan proyeksi keuangan. Bertujuan
-              untuk membantu menajemen dalam pengambilan keputusan strategis dan
-              merencanakan pertumbuhan bisnis.
+              Preparation of company performance reports, including data
+              analysis historical, future forecasting, and financial
+              projections. Purposeful to assist management in making strategic
+              decisions and planning business growth.
             </li>
             <li>
               <b>
-                Reviu Laporan Keuangan
+                Financial Report Review
                 <br />
               </b>
-              Pemeriksaan independen atas laporan keuangan perusahaan untuk
-              memastikan kepatuhan terhadap standar akuntansi yang berlaku dan
-              keakuratan informasi yang disajikan. Review ini memberikan
-              keyakinan kepada pemangku kepentingan bahwa laporan keuangan telah
-              diperiksa secara cermat.
+              Independent examination of the company's financial statements for
+              ensure compliance with applicable accounting standards and
+              accuracy of the information presented. This review delivers
+              confidence to stakeholders that the financial statements have been
+              checked carefully.
             </li>
             <li>
               <b>
-                Kompilasi Laporan Keuangan Bulanan dan Tahunan
+                Compilation of Monthly and Annual Financial Reports
                 <br />
               </b>
-              Penyusunan laporan keuangan bulanan dan tahunan perusahaan. Tim
-              konsultan akan membantu dalam menutup periode akuntansi, neraca
-              saldo, rekonsiliasi, serta mengumpulkan dan menganalisis data
-              keuangan agar laporan akhir mencerminkan kinerja dan posisi
-              keuangan perusahaan secara akurat.
+              Preparation of company monthly and annual financial reports. Team
+              the consultant will assist in closing the accounting period,
+              balance sheet balances, reconciliations, and collecting and
+              analyzing data financial statements so that the final report
+              reflects performance and position company finances accurately.
             </li>
           </ul>
         </div>

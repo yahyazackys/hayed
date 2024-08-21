@@ -9,6 +9,7 @@ import ClientSection from "./components/home/ClientSection";
 import ArticleSection from "./components/home/ArticleSection";
 import TestimonialSection from "./components/home/TestimonialSection";
 import FaqSection from "./components/home/FaqSection";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -63,34 +64,41 @@ export default function Home() {
       >
         <div className="flex flex-col w-full items-center text-center">
           <h2 className="text-[27px] md:text-4xl lg:text-5xl font-bold text-black">
-            Butuh Layanan Konsultasi?
+            Need Consulting Services?
           </h2>
-          <p className="text-base md:text-lg lg:text-xl font-normal italic text-black md:mt-4">
-            Informasi Lebih Lanjut
-          </p>
+          <Link
+            href={"/vision-mission-value"}
+            className="text-base md:text-lg lg:text-xl font-normal italic text-black md:mt-4 hover:underline hover:cursor-pointer"
+          >
+            Further information
+          </Link>
           <div className="flex flex-col md:flex-row items-center mt-16 md:mt-24 lg:mt-32 gap-y-12 md:gap-y-0 md:gap-x-16 lg:gap-x-40">
             <div className="flex flex-col items-center gap-y-4">
               <Image
-                src="/mission.png"
+                src="/vision-mission/mission.png"
                 alt="Mission"
-                width={120}
+                width={200}
                 height={120}
               />
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#AE7C34]">
+              {/* <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#AE7C34]">
                 MISSION
-              </h2>
+              </h2> */}
             </div>
             <div className="flex flex-col items-center gap-y-4">
-              <Image src="/vision.png" alt="Vision" width={160} height={160} />
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#214193]">
-                VISION
-              </h2>
+              <Image
+                src="/vision-mission/value.png"
+                alt="Value"
+                width={280}
+                height={120}
+              />
             </div>
             <div className="flex flex-col items-center gap-y-4">
-              <Image src="/value.png" alt="Value" width={120} height={120} />
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#8EC744]">
-                VALUE
-              </h2>
+              <Image
+                src="/vision-mission/vision.png"
+                alt="Vision"
+                width={200}
+                height={120}
+              />
             </div>
           </div>
         </div>

@@ -117,44 +117,13 @@ const Header = () => {
               {link.subMenu && activeMenu === index && (
                 <ul className="absolute left-0 top-full mt-2 p-2 shadow-lg bg-white rounded-md w-48 md:w-60 z-50">
                   {link.subMenu.map((subLink, subIndex) => (
-                    <li
-                      key={subIndex}
-                      className={`relative ${subLink.subMenu && "group"}`}
-                    >
-                      {subLink.subMenu ? (
-                        <>
-                          <button
-                            onClick={() => toggleSubMenu(subIndex)}
-                            className="flex max-md:text-[14px] justify-between items-center hover:bg-gray-100 rounded-md p-2 w-full text-left"
-                          >
-                            {subLink.name}
-                            <BiChevronDown className="ml-1" />
-                          </button>
-                          {activeSubMenu === subIndex && (
-                            <ul className="absolute left-full top-0 mt-0 ml-3 p-2 shadow-lg bg-white rounded-md w-36 md:w-60 z-50">
-                              {subLink.subMenu.map(
-                                (nestedLink, nestedIndex) => (
-                                  <li key={nestedIndex}>
-                                    <Link
-                                      href={nestedLink.path}
-                                      className="block max-md:text-[14px] text-black hover:bg-gray-100 rounded-md p-2"
-                                    >
-                                      {nestedLink.name}
-                                    </Link>
-                                  </li>
-                                )
-                              )}
-                            </ul>
-                          )}
-                        </>
-                      ) : (
-                        <Link
-                          href={subLink.path}
-                          className="block text-black hover:bg-gray-100 rounded-md p-2 max-md:text-[14px]"
-                        >
-                          {subLink.name}
-                        </Link>
-                      )}
+                    <li key={subIndex} className={`relative`}>
+                      <Link
+                        href={subLink.path}
+                        className="block text-black hover:bg-gray-100 rounded-md p-2 max-md:text-[14px]"
+                      >
+                        {subLink.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>

@@ -22,6 +22,7 @@ const config: Config = {
     extend: {
       colors: {
         brown: "#292826",
+        primary: "#00213F",
         black: {
           soft: "#2B2A28",
           original: "#000000",

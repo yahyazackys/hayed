@@ -5,13 +5,13 @@ const TestimonialSection = () => {
     {
       name: "PT Jaswita Jabar",
       testimonial:
-        "Pengalaman bekerja sama dengan Hayed merupakan pengalaman yang luar biasa menyenangkan. Memiliki tim yang baik, dapat bekerja sama secara kooperatif dan transparan. Tidak ada batasan, namun tetap sesuai scope pekerjaan dan aturan. Cara berkomunikasi dengan tim sangat baik, fleksibel, dan mudah dipahami. Ketika menemukan problem sekalipun, kedua pihak seringkali mendapatkan solusi yang tepat. Semoga kerjasama antara PT Jaswita Jabar dan Hayed tetap terjalin ke depannya.",
+        "The experience of working with Hayed was an incredibly enjoyable experience. Have a good team, able to work together cooperatively and transparently. There are no restrictions, but still according to the scope of work and regulations. The way to communicate with the team is very good, flexible and easy to understand. Even when problems are encountered, both parties often find the right solution. Hopefully the collaboration between PT Jaswita Jabar and Hayed will continue to exist in the future.",
       image: "/testimoni/jaswitajabar.png",
     },
     {
       name: "PT Tae Hang Indonesia",
       testimonial:
-        "Untuk kerjasama sangat kooperatif, komunikasi bagus, dikala ada masalah cepat penanganannya, respon bagus. Semoga akan terus dipertahankan, sehingga tetap menjadi partner yang nyaman.",
+        "Very cooperative cooperation, good communication, if there is a problem it is handled quickly, good response. Hopefully it will continue to be maintained, so that it remains a comfortable partner.",
       image: "/testimoni/tahaeng.jpg",
     },
   ];
@@ -32,7 +32,7 @@ const TestimonialSection = () => {
                 <Image
                   src={testimonial.image}
                   alt={testimonial.name}
-                  width={100}
+                  width={80}
                   height={80}
                   className="rounded-full object-contain"
                   style={{ objectFit: "contain" }}

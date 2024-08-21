@@ -7,28 +7,28 @@ import { FaHandshakeSimple } from "react-icons/fa6";
 const ServiceCard = () => {
   const [services] = useState([
     {
-      imageName: "/service2/accounting-white.png",
-      title: "Akuntansi",
+      imageName: "/service/accounting/icon-white.png",
+      title: "Accounting",
       description:
         "Accounting services are a process for preparing and preparing financial reports that begin with data collection/proof of transactions/invoices/recap records which are processed into financial reports.",
     },
     {
-      imageName: "/service2/tax-white.png",
-      title: "Perpajakan",
+      imageName: "/service/tax/icon-white.png",
+      title: "Tax",
       description:
         "Service tax is a tax collected by the government. In Indonesia it is generally 10% of your total bill. The bill includes food, drinks and other services such as ambiance.",
     },
     {
-      imageName: "/service2/training-white.png",
-      title: "Pelatihan Bisnis",
-      description:
-        "Business training is a process of exploring the abilities/potential of individuals by asking questions to get the goals to be achieved.",
-    },
-    {
-      imageName: "/service2/advisory-white.png",
-      title: "Penasihat Bisnis & Keuangan",
+      imageName: "/service/business-advisory/icon-white.png",
+      title: "Business & Financial Advisor",
       description:
         "a business advisor is a wise strategist who works for the entrepreneur's company and helps him in various departments - business planning, marketing, finance and even business development.",
+    },
+    {
+      imageName: "/service/business-training/icon-white.png",
+      title: "Business Training",
+      description:
+        "Business training is a process of exploring the abilities/potential of individuals by asking questions to get the goals to be achieved.",
     },
   ]);
 

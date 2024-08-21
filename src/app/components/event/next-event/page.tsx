@@ -22,12 +22,13 @@ const NextEvent = () => {
   const [events, setEvents] = useState<NextEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const imageBaseUrl = "http://hayed-admin.com/event-images/";
+  const imageBaseUrl = "http://admin.hayedconsulting.com/event-images/";
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const apiUrl = "https://hayed-admin.com/api/agenda-selanjutnya";
+        const apiUrl =
+          "https://admin.hayedconsulting.com/api/agenda-selanjutnya";
         const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
 
         const response = await axios.get(apiUrl, {

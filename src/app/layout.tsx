@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "./context/AuthContext";
+import WhatsappButton from "./components/WhatsappButton";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   icons: {
     icon: ["/favicon.ico"],
     apple: ["/apple-touch-icon.png"],
-    shortcut: ["/apple-touch-icon.png?"],
+    shortcut: ["/apple-touch-icon.png"],
   },
 };
 
@@ -22,9 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link rel="icon" href="/logo-white.png" className="w-full" />
+      <link rel="icon" href="/logo-icon.png" className="w-full" />
       <body className={`${raleway.className} bg-white`}>
         <AuthProvider>{children}</AuthProvider>
+        <WhatsappButton />
       </body>
     </html>
   );

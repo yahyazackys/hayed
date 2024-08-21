@@ -4,9 +4,9 @@ import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
 
 const InformasiDetail = async ({ params }: { params: { id: string } }) => {
-  const apiUrl = `https://hayed-admin.com/api/agenda/${params.id}/detail`;
+  const apiUrl = `https://admin.hayedconsulting.com/api/agenda/${params.id}/detail`;
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
-  const imageBaseUrl = "http://stitmuaraenim-admin.com/event-images/";
+  const imageBaseUrl = "http://admin.hayedconsulting.com/event-images/";
 
   try {
     const response = await axios.get(apiUrl, {
@@ -40,9 +40,8 @@ const InformasiDetail = async ({ params }: { params: { id: string } }) => {
               <Image
                 src={`${imageBaseUrl}${informasi.gambar}`}
                 alt="Hayed Logo"
-                width={400}
+                width={500}
                 height={300}
-                className="w-auto h-auto max-w-full"
               />
             </div>
           </div>
@@ -57,7 +56,7 @@ const InformasiDetail = async ({ params }: { params: { id: string } }) => {
 };
 
 export async function generateStaticParams() {
-  const apiUrl = "https://hayed-admin.com/api/agenda";
+  const apiUrl = "https://admin.hayedconsulting.com/api/agenda";
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
 
   try {

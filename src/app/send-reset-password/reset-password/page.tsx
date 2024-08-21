@@ -23,7 +23,7 @@ const NewPassword = () => {
 
     try {
       const response = await axios.post(
-        "https://hayed-admin.com/api/set-new-password",
+        "https://admin.hayedconsulting.com/api/set-new-password",
         {
           email,
           password,

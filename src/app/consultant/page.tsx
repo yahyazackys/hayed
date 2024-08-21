@@ -6,6 +6,12 @@ import Image from "next/image";
 import Footer from "../components/Footer";
 import axios from "axios";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
 
 interface Consultant {
   id: number;
@@ -19,9 +25,10 @@ interface Consultant {
 
 export default function Page() {
   const [consultants, setConsultants] = useState<Consultant[]>([]);
-  const apiUrl = "https://hayed-admin.com/api/consultant";
+  const apiUrl = "https://admin.hayedconsulting.com/api/consultant";
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
-  const imageBaseUrl = "https://hayed-admin.com/consultantNonbg-images/";
+  const imageBaseUrl =
+    "https://admin.hayedconsulting.com/consultantNonbg-images/";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -82,7 +89,7 @@ export default function Page() {
         <div className="flex flex-col md:flex-row justify-between items-center w-full">
           <div className="flex justify-center order-2 md:order-1">
             <Image
-              src="/consultant.png"
+              src="/consultant/consultant.png"
               alt="Consultant Image"
               width={500}
               height={400}
@@ -112,47 +119,73 @@ export default function Page() {
             HAYED CONSULTING
           </h2>
         </div>
-        <div className="flex flex-wrap justify-center gap-8">
-          {currentConsultants.map((consultant) => (
-            <Link
-              href={`/consultant/${consultant.id}`}
-              key={consultant.id}
-              className="flex flex-col items-center max-w-xs text-center w-80 mx-2"
-            >
-              <div className="bg-white shadow-xl p-4 rounded-xl w-60 h-72 flex items-center justify-center mb-4 overflow-hidden">
-                <Image
-                  src={`${imageBaseUrl}${consultant.gambar_nonbg}`}
-                  alt={consultant.nama_gelar}
-                  width={120}
-                  height={128}
-                  objectFit="cover"
-                  className="w-full"
-                  loading="lazy"
-                  unoptimized
-                />
+        <Swiper
+          modules={[Pagination]}
+          spaceBetween={30}
+          centeredSlides={false}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          speed={1000}
+          slidesPerView={1}
+          slidesPerGroup={1}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          pagination={{
+            clickable: true,
+            dynamicBullets: true,
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              slidesPerGroup: 1,
+            },
+            768: {
+              slidesPerView: 2,
+              slidesPerGroup: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+              slidesPerGroup: 1,
+            },
+            1400: {
+              slidesPerView: 4,
+              slidesPerGroup: 1,
+            },
+          }}
+          className="mySwiper w-full px-20"
+        >
+          {consultants.map((consultant) => (
+            <SwiperSlide key={consultant.id} className="py-8">
+              <div className="flex justify-center items-center h-full">
+                <Link
+                  href={`/consultant/${consultant.id}`}
+                  key={consultant.id}
+                  className="flex flex-col items-center max-w-xs text-center w-80 mx-2"
+                >
+                  <div className="bg-[#A9A5A9] shadow-xl rounded-xl w-80 h-[21rem] flex items-end justify-end mb-4 overflow-hidden">
+                    <Image
+                      src={`${imageBaseUrl}${consultant.gambar_nonbg}`}
+                      alt={consultant.nama_asli}
+                      width={480}
+                      height={128}
+                      objectFit="contain"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-black">
+                    {consultant.nama_asli}
+                  </h3>
+                  <p className="text-black font-light">
+                    {consultant.pekerjaan}
+                  </p>
+                </Link>
               </div>
-              <h3 className="text-2xl font-semibold text-black">
-                {consultant.nama_gelar}
-              </h3>
-              <p className="text-black font-light">{consultant.pekerjaan}</p>
-            </Link>
+            </SwiperSlide>
           ))}
-        </div>
-        <div className="flex justify-center mt-8">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index + 1}
-              onClick={() => handlePageChange(index + 1)}
-              className={`py-2 px-4 mx-1 rounded ${
-                currentPage === index + 1
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-200 text-black"
-              }`}
-            >
-              {index + 1}
-            </button>
-          ))}
-        </div>
+        </Swiper>
       </section>
       <Footer />
     </main>

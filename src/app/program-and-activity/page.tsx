@@ -15,13 +15,13 @@ export default function page() {
         <div className="flex flex-col md:flex-row justify-between items-center w-full">
           <div className="md:w-1/2 flex flex-col justify-center text-center md:text-left mb-8 md:mb-0">
             <h2 className="text-4xl font-bold mb-3 text-black">
-              Program dan Aktivitas Hayed Consulting
+              Hayed Consulting Programs and Activities
             </h2>
             <p className="max-w-lg text-black font-light text-justify">
-              Hayed Consulting memiliki beberapa program dan aktivitas yang
-              dilakukan untuk membantu dalam proses pengembangan dan maintanance
-              perusahaan agar dapat berjalan sesuai dengan prosedur dan
-              ketentuan yang berlaku.
+              Hayed Consulting has several programs and activities that are
+              carried out to assist in the process of developing and maintaining
+              the company so that it can run in accordance with applicable
+              procedures and regulations.
             </p>
           </div>
           <div className="md:flex justify-center hidden">

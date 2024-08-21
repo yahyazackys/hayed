@@ -31,7 +31,7 @@ export default function page() {
       >
         <div className="flex flex-col w-full">
           <h2 className="text-3xl font-semibold text-start text-black">
-            Berita Hangat
+            Breaking News
           </h2>
           <ArticleBreaking />
         </div>

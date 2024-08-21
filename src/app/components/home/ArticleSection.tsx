@@ -17,8 +17,8 @@ const ArticleSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<null | number>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const imageBaseUrl = "http://hayed-admin.com/new-images/";
-  const apiUrl = "https://hayed-admin.com/api/berita-hangat";
+  const imageBaseUrl = "http://admin.hayedconsulting.com/new-images/";
+  const apiUrl = "https://admin.hayedconsulting.com/api/berita-hangat";
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const ArticleSection = () => {
         <div className="flex flex-row items-center mb-2 md:mb-8">
           <GrArticle size={32} />
           <h2 className="text-[24px] md:text-4xl font-bold text-start ml-3 text-black-original">
-            Artikel
+            Article
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

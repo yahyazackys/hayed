@@ -1,45 +1,36 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const FaqSection = () => {
   const [faqs] = useState([
     {
-      question:
-        "Bagaimana saya dapat menggunakan layanan konsultasi dari Hayed Consulting?",
+      question: "How can I use Hayed Consulting's consulting services?",
       answer:
-        "Anda dapat menghubungi tim konsultan kami melalui telepon (0812-9090-8214 / 0811-9001-009) atau email (info@hayedconsulting.com) untuk mengatur pertemuan awal. Kami akan mendengarkan kebutuhan bisnis Anda dan memberikan solusi yang sesuai dengan tujuan perusahaan atau bisnis Anda.",
+        "You can contact our consulting team by phone (0811-9001-009) or email (info@hayedconsulting.com) to arrange an initial meeting. We will listen to your business needs and provide solutions that suit your company or business goals.",
     },
     {
-      question:
-        "Apakah Hayed Consulting melayani dari berbagai industri? Jika iya, apa yang menjadi fokus utama dari layanan Hayed Consulting?",
+      question: "Does Hayed Consulting serve from various industries?",
       answer:
-        "Ya, kami melayani klien dari berbagai industri, termasuk industri manufaktur, layanan profesional, perdagangan, Non-Goverment Organization (NGO), Teknologi, Telekomunikasi, Perbankan, Agribisnis, dan lainnya. Tim kami telah memiliki pengetahuan yang luas untuk mengatasi kebutuhan khusus dari berbagai sektor.",
+        "Yes, we serve industrial clients, including manufacturing, issuers, professional services, trading, non-governmental organizations (NGO), technology, telecommunications, banking, agribusiness, and others. Our team has extensive knowledge to address the specialized needs of various sectors.",
     },
     {
-      question:
-        "Mengapa saya harus menggunakan jasa konsultasi dari Hayed Consulting?",
+      question: "Why should I use consulting services from Hayed Consulting?",
       answer:
-        "Karena Hayed Consulting memiliki berbagai layanan jasa konsultan, meliputi keuangan, audit, pajak, bisnis, dan juga pelatihan.",
+        "Because Hayed Consulting has a wide range of consulting services, including finance, audit, tax, business, and training.",
     },
     {
-      question: "Kapan waktu yang tepat untuk menggunakan jasa konsultan?",
+      question: "When is the right time to use a consultant?",
       answer:
-        "Saat Anda mencari panduan dari ahli untuk mengoptimalkan strategi, meningkatkan efisiensi operasional, dan mendorong pertumbuhan bagi perusahaan atau bisnis Anda.",
+        "When you seek expert guidance to optimize strategy, improve operational efficiency, and drive growth for your company or business.",
     },
     {
-      question:
-        "Siapa saja yang dapat menggunakan layanan dan jasa dari Hayed Consulting?",
+      question: "Who can use the services of Hayed Consulting?",
       answer:
-        "Semua, bagi Anda yang ingin mengembangkan bisnis mulai dari skala kecil hingga besar.",
+        "All, for those of you who want to develop businesses ranging from small to large scale.",
     },
     {
-      question: "Jam berapa operasional Hayed Consulting?",
+      question: "What are the operational hours of Hayed Consulting?",
       answer:
-        "Senin-Jumat pukul 08.00 - 17.00, namun di luar itu anda dapat menghubungi kami melalui email info@hayedconsulting.com.",
-    },
-    {
-      question: "Apa saja akun sosial media Hayed Consulting?",
-      answer:
-        "Instagram: @hayed_consulting\n\nWebsite: https://hayedconsulting.com/\nLinkedin: Hayed Consulting\nFacebook Fanpage: hayedconsulting\nTwitter: Hayedconsulting",
+        "Monday-Friday at 08.00–17.00 WIB, but outside of that, you can contact us via email at info@hayedconsulting.com.",
     },
   ]);
 
@@ -59,76 +50,36 @@ const FaqSection = () => {
           View the frequently asked questions below
         </p>
         <div className="flex flex-wrap w-full justify-center">
-          <div className="w-full md:w-1/2 lg:w-[45%]">
-            {faqs.slice(0, 5).map((faq, index) => (
+          {faqs.map((faq, index) => (
+            <div key={index} className="w-full md:w-1/2 lg:w-[45%] mb-4">
               <div
-                key={index}
-                className="collapse collapse-plus bg-transparent mb-4 w-full"
+                onClick={() => toggleAccordion(index)}
+                className={`cursor-pointer transition-colors duration-300 p-4 rounded-t-lg ${
+                  activeIndex === index
+                    ? "bg-white text-black-original"
+                    : "bg-transparent text-white"
+                }`}
               >
-                <input
-                  type="radio"
-                  name="accordion"
-                  id={`accordion-radio-${index}`}
-                  className="hidden"
-                />
-                <label
-                  onClick={() => toggleAccordion(index)}
-                  className={`collapse-title text-[16px] md:text-xl font-medium cursor-pointer ${
-                    activeIndex === index
-                      ? "bg-white text-black"
-                      : "text-white bg-transparent"
-                  }`}
-                  htmlFor={`accordion-radio-${index}`}
-                >
-                  {faq.question}
-                </label>
-                <div
-                  className={`collapse-content ${
-                    activeIndex === index
-                      ? "bg-white transition-max-h duration-500 ease-out max-h-[500px]"
-                      : "max-h-0"
-                  } overflow-hidden`}
-                >
-                  <p className="text-black p-4">{faq.answer}</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-[16px] md:text-xl font-medium">
+                    {faq.question}
+                  </span>
+                  <span className="text-xl">
+                    {activeIndex === index ? "-" : "+"}
+                  </span>
                 </div>
               </div>
-            ))}
-          </div>
-          <div className="w-full md:w-1/2 lg:w-[45%]">
-            {faqs.slice(5).map((faq, index) => (
               <div
-                key={index + 5}
-                className="collapse collapse-plus bg-transparent mb-4 w-full"
+                className={`overflow-hidden transition-max-height duration-500 rounded-b-lg ease-in-out ${
+                  activeIndex === index
+                    ? "max-h-[200px] bg-white p-4"
+                    : "max-h-0"
+                }`}
               >
-                <input
-                  type="radio"
-                  name="accordion"
-                  id={`accordion-radio-${index + 5}`}
-                  className="hidden"
-                />
-                <label
-                  onClick={() => toggleAccordion(index + 5)}
-                  className={`collapse-title text-[16px] md:text-xl font-medium  cursor-pointer ${
-                    activeIndex === index + 5
-                      ? "bg-white text-black"
-                      : "text-white bg-transparent"
-                  }`}
-                  htmlFor={`accordion-radio-${index + 5}`}
-                >
-                  {faq.question}
-                </label>
-                <div
-                  className={`collapse-content ${
-                    activeIndex === index + 5
-                      ? "bg-white transition-max-h duration-500 ease-out max-h-[500px]"
-                      : "max-h-0"
-                  } overflow-hidden`}
-                >
-                  <p className="text-black p-4">{faq.answer}</p>
-                </div>
+                <p className="text-black">{faq.answer}</p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@
 const nextConfig = {
   images: {
     domains: [
-      'hayed-admin.com',
+      'admin.hayedconsulting.com',
     ],
     remotePatterns: [
       {
@@ -12,6 +12,7 @@ const nextConfig = {
     ],
     unoptimized: true,
   },
+  distDir: "build",
   output: 'export',
 };
 

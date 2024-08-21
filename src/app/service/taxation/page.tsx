@@ -12,7 +12,7 @@ export default function Page() {
 
       <div className="w-full h-screen relative">
         <Image
-          src="/seminar/bg.png"
+          src="/service/tax/bg.png"
           alt="Background image"
           fill
           objectFit="cover"
@@ -33,7 +33,7 @@ export default function Page() {
       <div className="flex flex-col lg:flex-row w-full justify-between py-8 md:py-10 px-6 md:px-12 lg:px-40">
         <div className="hidden md:flex flex-col w-1/4 items-center lg:items-start mb-10 lg:mb-0">
           <Image
-            src="/service/tax-icon.png"
+            src="/service/tax/icon.png"
             alt="Background image"
             width={100}
             height={100}
@@ -44,205 +44,199 @@ export default function Page() {
         </div>
         <div className="max-md:flex md:hidden flex-col items-center justify-center w-full mb-10 lg:mb-0">
           <Image
-            src="/service/tax-icon.png"
+            src="/service/tax/icon.png"
             alt="Background image"
             width={200}
             height={100}
             objectFit="contain"
           />
         </div>
-        <div className="flex flex-col items-start text-black w-full lg:w-1/2 gap-y-2 md:gap-y-4 justify-center">
+        <div className="flex flex-col items-start text-black w-full lg:w-1/2 gap-y-2 justify-center">
           <h2 className="text-2xl md:text-3xl font-bold">
-            APA ITU LAYANAN PAJAK ?
+            WHAT IS TAX SERVICE?
           </h2>
           <p className="text-[16px] md:text-lg font-normal text-justify">
-            Dengan adanya perubahan terus-menerus dalam hukum dan regulasi
-            perpajakan, layanan perpajakan ini dapat membantu individu dan
-            perusahaan untuk tetap mematuhi aturan dan menghindari masalah pajak
-            yang tidak diinginkan.
+            With constant changes in laws and regulations taxation, this tax
+            service can help individuals and companies to remain in compliance
+            with the rules and avoid tax problems which is undesirable.
           </p>
         </div>
       </div>
 
       <div className="flex flex-col lg:flex-row w-full justify-between px-6 md:px-12 lg:px-40 py-8 md:py-20">
         <div className="flex flex-col w-full lg:w-1/2 text-black gap-y-2 lg:pr-24 mb-10 lg:mb-0">
-          <h2 className="text-3xl font-bold">KAMI MELAYANI :</h2>
-
+          <h2 className="text-3xl font-bold">WE SERVE :</h2>
           <ul className="list-disc text-justify gap-y-4 flex flex-col">
             <li>
               <b>
-                Pajak pribadi tahunan
+                Annual Personal Tax
                 <br />
               </b>
-              Penyusunan dan pengajuan deklarasi pajak pribadi bagi individu,
-              termasuk karyawan, pengusaha, atau investor. Konsultan akan
-              membantu mengoptimalkan pemotongan pajak dan memastikan ketaatan
-              terhadap peraturan pajak yang berlaku.
+              Preparation and filing of personal tax declarations for
+              individuals, including employees, entrepreneurs, or investors.
+              Consultants will help optimize tax deductions and ensure
+              compliance with applicable tax regulations.
             </li>
             <li>
               <b>
-                Pajak perusahaan dan bisnis bulanan dan tahunan
+                Monthly and Annual Corporate and Business Tax
                 <br />
               </b>
-              Pengelolaan kewajiban pajak bulanan dan tahunan bagi perusahaan
-              dan bisnis. Konsultan akan memastikan pemenuhan peraturan
-              perpajakan dan penyusunan laporn keuangan yang sesuai dengan
-              standar pajak yang berlaku.
+              Management of monthly and annual tax obligations for companies and
+              businesses. Consultants will ensure compliance with tax
+              regulations and preparation of financial reports in accordance
+              with applicable tax standards.
             </li>
             <li>
               <b>
-                Perencanaan pajak lokal dan internasional
+                Local and International Tax Planning
                 <br />
               </b>
-              Perencanaan pajak strategis baik di tingkat lokal maupun
-              internasional. Konsultan akan membantu mengidentifikasi peluang
-              untuk menoptimalkan struktur perpajakan dan mengurangi beban pajak
-              dengan mempertimbangkan hukum pajak dari berbagai yurisdiksi.
+              Strategic tax planning at both local and international levels. The
+              consultant will help identify opportunities to optimize tax
+              structure and reduce tax burden by considering the tax laws of
+              various jurisdictions.
             </li>
             <li>
               <b>
-                Tinjauan diagnostik pajak
+                Tax Diagnostic Review
                 <br />
               </b>
-              Tinjauan menyeluruh atas situasi pajak suatu perusahaan atau
-              individu. Konsultan akan mengidentifikasi risiko pajak, potensi
-              kepatuhan pajak yang terlewatkan, serta memberikan rekomendasi
-              perbaikan dan strategi untuk mengelola risiko pajak.
+              A comprehensive review of the tax situation of a company or
+              individual. The consultant will identify tax risks, potential
+              missed tax compliance, and provide recommendations for
+              improvements and strategies to manage tax risks.
             </li>
             <li>
               <b>
-                Konsultasi manajemen pajak
+                Tax Management Consulting
                 <br />
               </b>
-              Bimibingan dan konsultasi khusus kepada manajemen perusahaan
-              terkait kebijakan pajak dan pengambilan keputusan strategis dalam
-              bidang perpajakan. Tujuannya untuk mencapai tujuan bisnis sambal
-              mempertimbangkan dampaknya terhadap kewajiban pajak.
+              Specialized guidance and consultation to company management on tax
+              policy and strategic tax decision-making. The goal is to achieve
+              business objectives while considering the impact on tax
+              obligations.
             </li>
             <li>
               <b>
-                Penasihat pajak akuntansi
+                Accounting Tax Advisor
                 <br />
               </b>
-              Penilaian dan penyesuaian metode akuntansi untuk mengoptimalkan
-              dampak pajak pada laporan keuangan perusahaan. Konsultan akan
-              membantu mengidentifikasi metode yang sesuai untuk memaksimalkan
-              manfaat pajak.
+              Assessment and adjustment of accounting methods to optimize the
+              tax impact on the company's financial statements. The consultant
+              will help identify appropriate methods to maximize tax benefits.
             </li>
             <li>
               <b>
-                Penasihat risiko pajak
+                Tax Risk Advisor
                 <br />
               </b>
-              Mengidentifikasi, menganalisis, dan mitigasi risiko pajak yang
-              meungkin dihadapi oleh perusahaan. Konsultan akan membantu
-              perusahaan memahami dampak potensial dari perubahan hukum pajak
-              atau kebijakan pemerintah.
+              Identify, analyze, and mitigate tax risks that may be faced by the
+              company. Consultants will help companies understand the potential
+              impact of changes in tax laws or government policies.
             </li>
             <li>
               <b>
-                Optimalisasi dan efisiensi pajak
+                Tax Optimization and Efficiency
                 <br />
               </b>
-              Mengoptimalkan struktur perpajakan perusahaan guna mengurangi
-              beban pajak secara sah dan efisien. Konsultan akan membantu
-              menemukan cara-cara untuk memanfaatkan insentif pajak dan
-              mengurangi pembayaran pajak yang tidak perlu.
+              Optimize the company's tax structure to legally and efficiently
+              reduce the tax burden. Consultants will help find ways to utilize
+              tax incentives and reduce unnecessary tax payments.
             </li>
             <li>
               <b>
-                Pemeriksaan Pajak, Keberatan dan Banding
+                Tax Audit, Objection, and Appeal
                 <br />
               </b>
-              Representasi dan pembelaan atas nama perusahaan atau individu
-              dalam pemeriksaan pajak oleh otoritas pajak. Konsultan akan
-              membantu menyusun dokumen dan argumen yang diperlukan serta
-              membantu dalam proses banding jika diperlukan.
+              Representation and defense on behalf of companies or individuals
+              in tax audits by tax authorities. The consultant will help draft
+              the necessary documents and arguments and assist in the appeal
+              process if required.
             </li>
             <li>
               <b>
-                Peninjauan kembali pajak
+                Tax Review
                 <br />
               </b>
-              Peninjauan ulang atas laporan pajak sebelumnya guna
-              mengidentifikasi kesalahan atau potensi perbaikan yang dapat
-              menguntungkan perusahaan atau individu secara finansial.
+              Review of previous tax returns to identify errors or potential
+              improvements that may benefit the company or individual
+              financially.
             </li>
             <li>
               <b>
-                Penggabungan & akuisisi pasca pemeriksaan pajak (M&A)
+                Merger & Acquisition Tax Audit Post (M&A)
                 <br />
               </b>
-              Peninjauan pemeriksaan pajak terkait dengan proses penggabungan
-              dan akuisisi perusahaan. Konsultan akan mengevaluasi potensi
-              risiko pajak yang terkait dengan transaksi M&A dan memberikan
-              rekomendasi strategis untuk mengurangi potensi masalah perpajakan
-              masa depan.
+              Tax audit review related to the process of merging and acquiring
+              companies. The consultant will evaluate potential tax risks
+              associated with M&A transactions and provide strategic
+              recommendations to mitigate potential future tax issues.
             </li>
             <li>
               <b>
-                Perencanaan penetapan harga transfer pricing, kepatuhan, dan
-                resolusi kontroversi
+                Transfer Pricing Planning, Compliance, and Controversy
+                Resolution
                 <br />
               </b>
-              Perencanaan strategis terkait penetapan harga transfer, kepatuhan,
-              dan penyelesaian masalah atau kontroversi yang berkaitan dengan
-              praktik penetapan harga transfer. Konsultan akan membantu
-              perusahaan dalam mengikuti aturan perpajakan yang berlaku untuk
-              transaksi antar perusahaan yang terafiliasi.
+              Strategic planning related to transfer pricing, compliance, and
+              resolution of issues or controversies relating to transfer pricing
+              practices. The consultant will assist the company in following the
+              tax rules applicable to transactions between affiliated companies.
             </li>
             <li>
               <b>
-                Strategi Pertahanan Penetapan Transfer Pricing
+                Transfer Pricing Defense Strategy
                 <br />
               </b>
-              Penyusunan strategi pertahanan jika terjadi pemeriksaan atau
-              kontroversi terkait penetapan harga transfer oleh otoritas pajak.
-              Konsultan akan membantu dalam menyusun argumen dan bukti yang kuat
-              untuk mendukung kepatuhan perusahaan dengan prinsip-prinsip
-              transfer pricing.
+              Formulation of defense strategies in the event of an audit or
+              controversy related to transfer pricing by the tax authorities.
+              Consultants will assist in drafting strong arguments and evidence
+              to support the company's compliance with transfer pricing
+              principles.
             </li>
             <li>
               <b>
-                Transfer Pricing dan Bea Cukai
+                Transfer Pricing and Customs
                 <br />
               </b>
-              Perencanaan dan implementasi praktik transfer harga yang mematuhi
-              ketentuan perpajakan yang berlaku. Konsultan akan membantu
-              perusahaan mengoptimalkan struktur transfer harga dan memastikan
-              kepatuhan dengan regulasi bea cukai.
+              Planning and implementation of transfer pricing practices that
+              comply with applicable tax provisions. Consultants will help
+              companies optimize transfer pricing structures and ensure
+              compliance with customs regulations.
             </li>
             <li>
               <b>
-                Pengembalian PPN
+                VAT Refund
                 <br />
-                Pengajuan pengembalian Pajak Pertambahan Nilai (PPN) bagi
-                perusahaan atau individu yang memiliki hak untuk mengklaim
-                kredit pajak yang belum digunakan dalam transaksi bisnis mereka.
               </b>
+              Filing Value Added Tax (VAT) returns for companies or individuals
+              who have the right to claim unused tax credits in their business
+              transactions.
             </li>
             <li>
               <b>
-                Penyelesaian sengketa PPN (audit, keberatan, dan banding)
+                VAT Dispute Resolution (Audit, Objection, and Appeal)
                 <br />
               </b>
-              Representasi dan pembelaan atas nama perusahaan atau individu
-              dalam penyelesaian sengketa PPN dengan otoritas pajak. Konsultan
-              akan membantu dalam proses audit, menyusun argumen keberatan, dan
-              melakukan proses banding jika diperlukan.
+              Representation and defense on behalf of companies or individuals
+              in VAT dispute resolution with tax authorities. Consultants will
+              assist in the audit process, draft objection arguments, and
+              conduct the appeal process if needed.
             </li>
             <li>
               <b>
-                Tinjauan uji tuntas PPN
+                Due Diligence Review on VAT
                 <br />
               </b>
-              Tinjauan mendalam atas kewajiban PPN yang relevan untuk transaksi
-              atau kegiatan perusahaan. Konsultan akan mengevaluasi kepatuhan
-              perusahaan terhadap peraturan PPN dan memberikan rekomendasi untuk
-              meningkatkan ketaatan.
+              In-depth review of VAT obligations relevant to the company's
+              transactions or activities. The consultant will evaluate the
+              company's compliance with VAT regulations and provide
+              recommendations to improve compliance.
             </li>
           </ul>
         </div>
+
         <div className="flex flex-col w-full lg:w-1/2">
           <Image
             src="/service/accounting-serve.png"

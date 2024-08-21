@@ -5,9 +5,9 @@ import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
 
 const InformasiDetail = async ({ params }: { params: { id: string } }) => {
-  const apiUrl = `https://hayed-admin.com/api/consultant/${params.id}/detail`;
+  const apiUrl = `https://admin.hayedconsulting.com/api/consultant/${params.id}/detail`;
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
-  const imageBaseUrl = "http://hayeDADAd-admin.com/consultantBg-images/";
+  const imageBaseUrl = "http://admin.hayedconsulting.com/consultantBg-images/";
 
   try {
     const response = await axios.get(apiUrl, {
@@ -25,10 +25,10 @@ const InformasiDetail = async ({ params }: { params: { id: string } }) => {
           className="w-full min-h-screen flex items-center px-6 md:px-12 lg:px-20 xl:px-40 py-28 md:py-32 lg:py-40"
         >
           <div className="flex flex-col md:flex-row md:justify-between gap-x-10 w-full gap-y-8 md:gap-y-0">
-            <div className=" flex justify-center md:justify-start">
+            <div className="w-[50%] flex justify-center md:justify-start">
               <div className="max-w-full">
                 <h2 className="text-2xl md:text-3xl lg:text-4xl mb-6 font-bold text-center md:text-left text-black-original">
-                  {informasi.nama_gelar}
+                  {informasi.nama_asli}
                 </h2>
                 <p className="max-w-full md:max-w-3xl text-justify text-black">
                   <span
@@ -37,13 +37,12 @@ const InformasiDetail = async ({ params }: { params: { id: string } }) => {
                 </p>
               </div>
             </div>
-            <div className=" flex justify-center md:justify-end items-center">
+            <div className="flex justify-center md:justify-end items-center">
               <Image
                 src={`${imageBaseUrl}${informasi.gambar_bg}`}
                 alt="Hayed Logo"
-                width={400}
+                width={500}
                 height={300}
-                className="w-auto h-auto max-w-full"
               />
             </div>
           </div>
@@ -58,7 +57,7 @@ const InformasiDetail = async ({ params }: { params: { id: string } }) => {
 };
 
 export async function generateStaticParams() {
-  const apiUrl = "https://hayed-admin.com/api/consultant";
+  const apiUrl = "https://admin.hayedconsulting.com/api/consultant";
   const apiKey = "wnAQvTGkmLG0zLV1zWQlQo7OrA42TbvEvcMLtGbzPGu4NSfXuJ";
 
   try {
